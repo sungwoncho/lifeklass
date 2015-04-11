@@ -23,6 +23,7 @@ end
 group :test do
   gem 'faker', '~> 1.4.3'
   gem 'database_cleaner', '~> 1.4.1'
+  gem 'shoulda-matchers'
 end
 
 gem 'haml', '~> 4.0.6'
