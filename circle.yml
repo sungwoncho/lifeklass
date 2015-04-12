@@ -5,3 +5,14 @@ machine:
 test:
   override:
     - bundle exec rspec
+
+deployment:
+  staging:
+    branch: staging
+    heroku:
+      appname: lifeklass-staging
+
+  production:
+    branch: production
+    heroku:
+      appname: lifeklass
