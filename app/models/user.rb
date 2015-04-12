@@ -5,4 +5,6 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_one :mentor
+  has_many :enrollments, class_name: "Courses::Enrollment"
+  has_many :courses, through: :enrollments, class_name: "Courses::Course"
 end
