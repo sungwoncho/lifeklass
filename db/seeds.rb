@@ -10,7 +10,7 @@ require "faker"
 include ActionView::Helpers::TextHelper
 
 User.destroy_all
-Mentor.destroy_all
+Mentors::Mentor.destroy_all
 Courses::Course.destroy_all
 
 (1..10).each do |n|
@@ -23,17 +23,17 @@ end
 
 puts "Created #{pluralize User.count, 'user'}."
 
-3.times do |n|
-  Mentor.create!(
-    user_id: (1..User.count).to_a.sample
+User.pluck(:id).sample(3).each do |n|
+  Mentors::Mentor.create!(
+    user_id: n
   )
 end
 
-puts "Created #{pluralize Mentor.count, 'mentor'}."
+puts "Created #{pluralize Mentors::Mentor.count, 'mentor'}."
 
 20.times do |n|
   Courses::Course.create!(
-    mentor_id: (1..Mentor.count).to_a.sample,
+    mentor_id: Mentors::Mentor.pluck(:id).sample,
     title: Faker::Company.catch_phrase,
     description: Faker::Lorem.paragraphs(3).join
   )

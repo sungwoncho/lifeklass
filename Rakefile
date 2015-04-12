@@ -8,7 +8,7 @@ begin
 
   # Run specs inside the engines as well as specs in the Rails root.
   RSpec::Core::RakeTask.new(:spec) do |t|
-    t.pattern = "engines/**/spec/**/*_spec.rb, spec/**/*_spec.rb"
+    t.pattern = "engines/**/spec/**/*_spec.rb"
   end
 rescue LoadError
 end

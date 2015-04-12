@@ -2,5 +2,8 @@
   .row
     .col-md-12
       %h1= @course.title
+      %small
+        Taught by
+        = link_to @course.mentor.name, mentors_app.mentor_path(@course.mentor)
 
       %p= @course.description
