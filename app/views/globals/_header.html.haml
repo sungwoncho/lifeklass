@@ -6,7 +6,7 @@
         %span.icon-bar
         %span.icon-bar
         %span.icon-bar
-      = link_to 'LifeKlass', root_path, class: 'navbar-brand'
+      = link_to 'LifeKlass', main_app.root_path, class: 'navbar-brand'
     #bs-example-navbar-collapse-1.collapse.navbar-collapse
       %ul.nav.navbar-nav
         %li.active
@@ -38,4 +38,4 @@
         %button.btn.btn-default{:type => "submit"} Submit
       %ul.nav.navbar-nav.navbar-right
         %li
-          = link_to 'Login', new_user_session_path
+          = link_to 'Login', main_app.new_user_session_path

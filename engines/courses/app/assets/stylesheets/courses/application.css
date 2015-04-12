@@ -11,8 +11,5 @@
  * file per style scope.
  *
  *= require_tree .
- *= require bootstrap.min
-
- *= require courses/application
  *= require_self
  */
