@@ -4,7 +4,7 @@ machine:
 
 test:
   override:
-    - bundle exec rspec
+    - bundle exec rake
 
 deployment:
   staging:

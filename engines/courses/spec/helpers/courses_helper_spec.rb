@@ -1,4 +1,4 @@
-require 'rails_helper'
+require File.expand_path('engines/courses/spec/spec_helper')
 
 # Specs in this file have access to a helper object that includes
 # the CoursesHelper. For example:
