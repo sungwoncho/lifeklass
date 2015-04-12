@@ -20,4 +20,5 @@
           %li
             = link_to 'Logout', main_app.destroy_user_session_path
         - else
-          = link_to 'Login', main_app.new_user_session_path
+          %li
+            = link_to 'Login', main_app.new_user_session_path

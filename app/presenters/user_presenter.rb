@@ -1,10 +1,16 @@
 class UserPresenter < ApplicationPresenter
 
   def firstname
-    model.name.split(/\s+/).first.humanize
+    name_components.first.humanize
   end
 
   def lastname
-    model.name.split(/\s+/).last.humanize
+    name_components.last.humanize
+  end
+
+  private
+
+  def name_components
+    model.name.split(/\s+/)
   end
 end

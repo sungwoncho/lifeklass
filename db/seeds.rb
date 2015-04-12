@@ -5,11 +5,13 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-
 require "faker"
+
+include ActionView::Helpers::TextHelper
 
 User.destroy_all
 Mentor.destroy_all
+Courses::Course.destroy_all
 
 (1..10).each do |n|
   User.create!(
@@ -19,12 +21,22 @@ Mentor.destroy_all
   )
 end
 
-puts "Created #{User.count} users."
+puts "Created #{pluralize User.count, 'user'}."
 
 3.times do |n|
   Mentor.create!(
-    user_id: (1..10).to_a.sample
+    user_id: (1..User.count).to_a.sample
   )
 end
 
-puts "Created #{Mentor.count} mentors."
+puts "Created #{pluralize Mentor.count, 'mentor'}."
+
+20.times do |n|
+  Courses::Course.create!(
+    mentor_id: (1..Mentor.count).to_a.sample,
+    title: Faker::Company.catch_phrase,
+    description: Faker::Lorem.paragraphs(3).join
+  )
+end
+
+puts "Created #{pluralize Courses::Course.count, 'course'}."

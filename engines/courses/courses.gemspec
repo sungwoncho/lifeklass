@@ -9,9 +9,8 @@ Gem::Specification.new do |s|
   s.version     = Courses::VERSION
   s.authors     = ["Sung Won Cho"]
   s.email       = ["mikeswcho@gmail.com"]
-  s.homepage    = "TODO"
-  s.summary     = "TODO: Summary of Courses."
-  s.description = "TODO: Description of Courses."
+  s.summary     = "Courses, enrollments, etc."
+  s.description = "Courses, enrollments, etc."
   s.license     = "MIT"
 
   s.files = Dir["{app,config,db,lib,spec/factories}/**/*", "MIT-LICENSE", "Rakefile", "README.rdoc"]
@@ -20,5 +19,4 @@ Gem::Specification.new do |s|
   s.add_dependency "rails", "~> 4.2.1"
 
   s.add_development_dependency "sqlite3"
-  s.add_development_dependency 'factory_girl_rails'
 end

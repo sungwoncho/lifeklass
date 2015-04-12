@@ -1,23 +1,29 @@
 require File.expand_path('engines/courses/spec/spec_helper')
 
 RSpec.describe Courses::CoursesController, type: :controller do
-  #
-  # describe "GET #index" do
-  #   it "assigns all courses as @courses" do
-  #     course = Courses::Course.create! valid_attributes
-  #     get :index, {}, valid_session
-  #     expect(assigns(:courses)).to eq([course])
-  #   end
-  # end
-  #
-  # describe "GET #show" do
-  #   it "assigns the requested course as @course" do
-  #     course = Courses::Course.create! valid_attributes
-  #     get :show, {:id => course.to_param}, valid_session
-  #     expect(assigns(:course)).to eq(course)
-  #   end
-  # end
-  #
+
+  routes { Courses::Engine.routes }
+
+  before(:each) do
+    login_user
+  end
+
+  describe "GET #index" do
+    it "assigns all courses as @courses" do
+      course = create(:course)
+      get :index
+      expect(assigns(:courses)).to eq([course])
+    end
+  end
+
+  describe "GET #show" do
+    it "decorates and assigns the requested course as @course" do
+      course = create(:course)
+      get :show, id: course
+      expect(assigns(:course).object).to eq(course)
+    end
+  end
+
   # describe "GET #new" do
   #   it "assigns a new course as @course" do
   #     get :new, {}, valid_session
