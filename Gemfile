@@ -1,8 +1,12 @@
 source 'https://rubygems.org'
-
+ruby '2.2.0'
 
 gem 'rails', '4.2.1'
 gem 'pg'
+
+group :production do
+  gem 'puma'
+end
 
 # LifeKlass App Engines
 gem 'courses', path: 'engines/courses'
