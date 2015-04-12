@@ -10,4 +10,20 @@ RSpec.describe User, type: :model do
   it 'has a valid factory' do
     expect(build(:user)).to be_valid
   end
+
+  describe '#is_a_mentor?' do
+    context 'when user has a mentor record' do
+      it 'returns true' do
+        @user = create(:user, :as_mentor)
+        expect(@user.is_a_mentor?).to eq true
+      end
+    end
+
+    context 'when user does not have a mentor record' do
+      it 'returns false' do
+        @user = create(:user)
+        expect(@user.is_a_mentor?).to eq false
+      end
+    end
+  end
 end

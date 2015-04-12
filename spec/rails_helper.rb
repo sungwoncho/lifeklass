@@ -50,4 +50,7 @@ RSpec.configure do |config|
 
   # Include FactoryGirl syntax to simplify calls to factories
   config.include FactoryGirl::Syntax::Methods
+
+  # Use test helpers in controller specs (e.g. sign_in)
+  config.include Devise::TestHelpers, type: :controller
 end
