@@ -26,4 +26,24 @@ RSpec.describe User, type: :model do
       end
     end
   end
+
+  describe '#enrolled_in?' do
+    before(:each) do
+      @user = create(:user)
+      @course = create(:course)
+    end
+
+    context 'when an enrollment record exists' do
+      it 'returns true' do
+        create(:enrollment, user: @user, course: @course)
+        expect(@user.enrolled_in?(@course.id)).to eq true
+      end
+    end
+
+    context 'when no enrollment record exists' do
+      it 'returns false' do
+        expect(@user.enrolled_in?(@course)).to eq false
+      end
+    end
+  end
 end

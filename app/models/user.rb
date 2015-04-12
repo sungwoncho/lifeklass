@@ -9,4 +9,8 @@ class User < ActiveRecord::Base
   def is_a_mentor?
     Mentors::Mentor.find_by(user_id: self.id).present?
   end
+
+  def enrolled_in?(course_id)
+    Courses::Enrollment.find_by(user_id: self.id, course_id: course_id).present?
+  end
 end

@@ -4,9 +4,13 @@ RSpec.configure do |config|
   end
 
   config.before(:each) do |example|
-    if true#example.metadata[:db]
-      DatabaseCleaner.start
-      DatabaseCleaner.clean
-    end
+    # When the app scales, choose to run database_cleaner for only the spec tagged as :db
+    # if example.metadata[:db]
+    #   DatabaseCleaner.start
+    #   DatabaseCleaner.clean
+    # end
+
+    DatabaseCleaner.start
+    DatabaseCleaner.clean
   end
 end

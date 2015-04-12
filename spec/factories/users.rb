@@ -1,6 +1,8 @@
 FactoryGirl.define do
+  sequence(:email) { |n| "user_#{n}@example.com" }
+
   factory :user do
-    email 'test@example.com'
+    email
     password 'password'
 
     trait :as_mentor do
