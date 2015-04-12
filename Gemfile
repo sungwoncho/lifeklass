@@ -6,6 +6,7 @@ gem 'pg'
 
 group :production do
   gem 'puma'
+  gem 'rails_12factor'
 end
 
 # LifeKlass App Engines
