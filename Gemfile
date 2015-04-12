@@ -22,9 +22,12 @@ group :development, :test do
 end
 
 group :test do
-  gem 'faker', '~> 1.4.3'
   gem 'database_cleaner', '~> 1.4.1'
   gem 'shoulda-matchers'
+end
+
+group :production, :test do
+  gem 'faker', '~> 1.4.3'
 end
 
 gem 'sass-rails', '~> 5.0'
