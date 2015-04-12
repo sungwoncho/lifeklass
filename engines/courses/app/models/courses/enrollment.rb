@@ -4,6 +4,6 @@ module Courses
     self.table_name = 'enrollments'
 
     belongs_to :user
-    belongs_to :mentor
+    belongs_to :mentor, class_name: "Mentors::Mentor"
   end
 end

@@ -4,6 +4,12 @@ PATH
     courses (0.0.1)
       rails (~> 4.2.1)
 
+PATH
+  remote: engines/mentors
+  specs:
+    mentors (0.0.1)
+      rails (~> 4.2.1)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -238,6 +244,7 @@ DEPENDENCIES
   haml-rails (~> 0.9)
   jbuilder (~> 2.0)
   jquery-rails
+  mentors!
   pg
   powder
   puma

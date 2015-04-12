@@ -11,6 +11,7 @@ end
 
 # LifeKlass App Engines
 gem 'courses', path: 'engines/courses'
+gem 'mentors', path: 'engines/mentors'
 
 group :development, :test do
   gem 'byebug'

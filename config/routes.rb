@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get '/about' => 'static_pages#about'
 
   mount Courses::Engine, at: '/', as: :courses_app
+  mount Mentors::Engine, at: '/', as: :mentors_app
 
   resources :users
 end
