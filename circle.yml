@@ -3,4 +3,5 @@ machine:
     version: 2.2.0
 
 test:
-  - bundle exec rspec
+  override:
+    - bundle exec rspec
