@@ -7,3 +7,5 @@
         = link_to @course.mentor.name, mentors_app.mentor_path(@course.mentor)
 
       %p= @course.description
+
+      #enrollment-action= @course.enroll_action_for(current_user)

@@ -16,7 +16,7 @@ RSpec.describe Courses::EnrollmentsController, type: :controller do
     context 'with valid params' do
       it 'creates an enrollment record' do
         expect {
-          post :create, id: @course.id
+          post :create, id: @course.id, format: :js
         }.to change(Courses::Enrollment, :count).by(1)
       end
     end
@@ -31,7 +31,7 @@ RSpec.describe Courses::EnrollmentsController, type: :controller do
     context 'with valid params' do
       it 'deletes the enrollment record' do
         expect {
-          delete :destroy, id: @course.id
+          delete :destroy, id: @course.id, format: :js
         }.to change(Courses::Enrollment, :count).by(-1)
       end
     end

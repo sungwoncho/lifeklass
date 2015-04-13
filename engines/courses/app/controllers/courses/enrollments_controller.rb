@@ -4,18 +4,20 @@ module Courses
 
     def create
       EnrollService.new(@course, current_user).call
-      render nothing: true # TODO: Return JS
     end
 
     def destroy
       DisenrollService.new(@course, current_user).call
-      render nothing: true
     end
 
     private
 
     def set_course
-      @course = Courses::Course.find(params[:id])
+      @course = CoursePresenter.new(course, view_context)
+    end
+
+    def course
+      Course.find(params[:id])
     end
   end
 end

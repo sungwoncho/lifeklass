@@ -53,7 +53,7 @@ module Courses
 
     private
       def set_course
-        @course = CoursePresenter.new(course)
+        @course = CoursePresenter.new(course, view_context)
       end
 
       def course

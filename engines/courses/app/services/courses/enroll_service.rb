@@ -15,7 +15,7 @@ module Courses
     private
 
     def enroll!
-      unless user.enrolled_in?(course)
+      unless user.enrolled_in?(course.id)
         Enrollment.create!(course_id: @course.id, user_id: user.id)
       end
     end

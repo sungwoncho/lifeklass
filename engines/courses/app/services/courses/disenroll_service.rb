@@ -15,7 +15,7 @@ module Courses
     private
 
     def disenroll!
-      if user.enrolled_in?(course)
+      if user.enrolled_in?(course.id)
         Enrollment.find_by(user_id: user.id, course_id: course.id).destroy!
       end
     end

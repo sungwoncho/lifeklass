@@ -1,15 +1,17 @@
 class ApplicationPresenter
+  include ActionView::Helpers::UrlHelper
 
   attr_reader :object
+  alias_method :model, :object
 
-  def initialize(object)
+  attr_reader :view
+  alias_method :h, :view
+
+  def initialize(object, view = nil)
     @object = object
+    @view = view
   end
-
-  def model
-    @object
-  end
-
+  
   private
 
   def method_missing(method, *args)
