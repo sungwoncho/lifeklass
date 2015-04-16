@@ -4,7 +4,7 @@ module Courses
     before_action :set_course, only: [:show, :edit, :update, :destroy]
 
     def index
-      @courses = Course.page(params[:page])
+      @courses = SearchService.new(course_params).call.page(params[:page])
     end
 
     def show

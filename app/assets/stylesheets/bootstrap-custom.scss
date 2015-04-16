@@ -1,0 +1,7 @@
+/* Override bootstrap.min.css */
+
+@media (min-width: 768px) {
+  .navbar {
+    border-radius: 0;
+  }
+}

@@ -9,10 +9,12 @@ RSpec.describe Courses::CoursesController, type: :controller do
   end
 
   describe "GET #index" do
-    it "assigns all courses as @courses" do
-      course = create(:course)
-      get :index
-      expect(assigns(:courses)).to eq([course])
+    context 'without params' do
+      it "assigns all courses as @courses" do
+        course = create(:course)
+        get :index
+        expect(assigns(:courses)).to eq([course])
+      end
     end
   end
 

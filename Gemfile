@@ -20,6 +20,7 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.2.1'
   gem 'factory_girl_rails', '~> 4.5.0'
   gem 'powder'
+  gem 'pry-rails'
 end
 
 group :test do
