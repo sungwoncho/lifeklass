@@ -8,4 +8,8 @@ RSpec.describe Courses::Category do
   describe 'associations' do
     it { should have_many(:course_categories) }
   end
+
+  it 'has a valid factory' do
+    expect(build(:category)).to be_valid
+  end
 end

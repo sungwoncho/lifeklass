@@ -8,13 +8,17 @@ module Courses
     end
 
     def call
-      Course.by_title(title)
+      Course.by_title(title).by_category(categories)
     end
 
     private
 
     def title
       @params[:title]
+    end
+
+    def categories
+      @params[:categories]
     end
   end
 end

@@ -12,8 +12,19 @@ RSpec.describe Courses::CoursesController, type: :controller do
     context 'without params' do
       it "assigns all courses as @courses" do
         course = create(:course)
+
         get :index
-        expect(assigns(:courses)).to eq([course])
+        expect(assigns(:courses)).to match_array [course]
+      end
+    end
+
+    context 'with search params' do
+      it 'searches and assigns all courses as @courses' do
+        guitar_lesson = create(:course, title: "guitar lesson")
+        create(:course, title: "improv 101")
+
+        get :index, course: { title: 'gui' }
+        expect(assigns(:courses)).to match_array [guitar_lesson]
       end
     end
   end
