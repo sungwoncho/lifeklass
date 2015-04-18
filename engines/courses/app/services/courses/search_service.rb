@@ -8,7 +8,8 @@ module Courses
     end
 
     def call
-      Course.by_title(title).by_category(categories)
+      Course.includes(:categories).
+      by_title(title).by_category(categories).references(:categories)
     end
 
     private

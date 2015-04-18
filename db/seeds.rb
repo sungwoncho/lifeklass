@@ -12,6 +12,10 @@ include ActionView::Helpers::TextHelper
 User.destroy_all
 Mentors::Mentor.destroy_all
 Courses::Course.destroy_all
+Courses::Category.destroy_all
+Courses::CourseCategory.destroy_all
+
+puts "Destroyed all previously existing records."
 
 (1..10).each do |n|
   User.create!(
@@ -40,3 +44,20 @@ puts "Created #{pluralize Mentors::Mentor.count, 'mentor'}."
 end
 
 puts "Created #{pluralize Courses::Course.count, 'course'}."
+
+15.times do |n|
+  Courses::Category.create!(
+    name: Faker::Commerce.department(2)
+  )
+end
+
+puts "Created #{pluralize Courses::Category.count, 'category'}."
+
+Courses::Course.all.each do |course|
+  Courses::CourseCategory.create!(
+    course_id: course.id,
+    category_id: Courses::Category.pluck(:id).sample(3).first
+  )
+end
+
+puts "Created #{pluralize Courses::CourseCategory.count, 'categorization'}"

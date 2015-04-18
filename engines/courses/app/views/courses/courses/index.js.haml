@@ -1,0 +1,2 @@
+$(".result").html("#{ j(render(@courses_facade.courses) || render("no_match")) }")
+$(".count").html("#{ j(render 'count', courses_facade: @courses_facade) }")

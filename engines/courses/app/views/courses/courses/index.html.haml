@@ -1,8 +1,13 @@
 .container
   .row
-    .col-md-12
-      
+    .col-md-12.mb20
+      %h1 Courses
 
   .row
-    .col-md-12
-      = render @courses
+    .col-md-3
+      = render 'search_form', courses_facade: @courses_facade
+    .col-md-9
+      = render 'count', courses_facade: @courses_facade
+      .result
+        = render(@courses_facade.courses) || render("no_match")
+        = @courses_facade.paginate(self)

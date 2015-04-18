@@ -9,9 +9,9 @@ module Courses
     has_many :course_categories
     has_many :categories, through: :course_categories
 
-    scope :by_title, -> (title) { where("title ILIKE ?", "%#{title}%") if title }
+    scope :by_title,    -> (title) { where("title ILIKE ?", "%#{title}%") if title }
     scope :by_category, -> (categories) {
-      joins(:categories).where("categories.name in (?)", categories) if categories
+      joins(:categories).where(categories: {name: categories}) if categories.present?
     }
   end
 end
