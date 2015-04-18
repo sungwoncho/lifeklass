@@ -1,10 +1,11 @@
 module Courses
   class CoursesController < ApplicationController
     skip_before_action :authenticate_user!, only: :index
+    before_action :authenticate_mentor!, only: [:new, :edit, :create, :update, :destroy]
     before_action :set_course, only: [:show, :edit, :update, :destroy]
 
     def index
-      @courses_facade = ::Courses::CoursesFacade.new(params[:search], self)
+      @courses_facade = CoursesFacade.new(params[:search], self)
     end
 
     def show
