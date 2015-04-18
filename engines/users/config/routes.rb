@@ -4,7 +4,5 @@ Users::Engine.routes.draw do
                                     registrations: "devise/registrations",
                                     passwords:     "devise/passwords"}
 
-  root 'static_pages#home'
-
   resources :users
 end
