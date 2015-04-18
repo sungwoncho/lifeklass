@@ -11,7 +11,7 @@ class ApplicationPresenter
     @object = object
     @view = view
   end
-  
+
   private
 
   def method_missing(method, *args)

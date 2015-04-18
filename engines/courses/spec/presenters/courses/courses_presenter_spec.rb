@@ -11,7 +11,7 @@ RSpec.describe Courses::CoursesPresenter, type: :presenter do
       allow(view_context).to receive(:will_paginate)
       courses_presenter.paginate
 
-      expect(view_context).to have_received(:will_paginate).with(courses)
+      expect(view_context).to have_received(:will_paginate).with(courses, anything)
     end
   end
 

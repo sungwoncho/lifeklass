@@ -1,5 +1,10 @@
-.row
+.row.course.mb20
   .col-md-12
-    = link_to course.title, course
+    %h4
+      = link_to course.title, course
+      %small= course.mentor.name
 
-    = course.description
+    = truncate(course.description, length: 300)
+    .categories.mt10
+    - course.categories.each do |category|
+      .label.label-info= category.name
