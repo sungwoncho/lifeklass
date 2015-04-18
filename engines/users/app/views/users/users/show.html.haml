@@ -1,6 +1,8 @@
 .container
   .row
     .col-md-12
-      %h1 Dashboard
+      %h1= @user_facade.dashboard_title(self)
 
+  .row
+    .col-md-12
       = @user_facade.enrolled_course_list(self)

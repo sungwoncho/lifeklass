@@ -10,7 +10,7 @@ module Users
     end
 
     def user_name
-      user.full_name
+      user.name
     end
 
     def enrolled_courses
@@ -18,11 +18,17 @@ module Users
     end
 
     def enrolled_course_list(view_context)
+      return unless view_context.current_user.id == @user.id
+
       if enrolled_courses.present?
         view_context.render(partial: 'users/users/dashboard/enrolled_course', collection: enrolled_courses)
       else
         view_context.render(partial: 'users/users/dashboard/no_enrollment')
       end
+    end
+
+    def dashboard_title(view_context)
+      view_context.current_user.id == @user.id ? 'Dashboard' : "#{@user.name}'s profile"
     end
   end
 end
