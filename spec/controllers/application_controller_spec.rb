@@ -21,4 +21,20 @@ RSpec.describe ApplicationController do
       end
     end
   end
+
+  describe '#authenticate_mentor!' do
+    context 'when there is current_mentor' do
+      it 'returns true' do
+        allow(application_controller).to receive(:current_mentor).and_return(double(Mentors::Mentor))
+        expect(application_controller.authenticate_mentor!).to eq true
+      end
+    end
+
+    context 'when there is no current_mentor' do
+      it 'returns false' do
+        allow(application_controller).to receive(:current_mentor).and_return(nil)
+        expect(application_controller.authenticate_mentor!).to eq false
+      end
+    end
+  end
 end

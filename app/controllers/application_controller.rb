@@ -9,4 +9,8 @@ class ApplicationController < ActionController::Base
     return unless current_user
     Mentors::Mentor.find_by(user_id: current_user.id)
   end
+
+  def authenticate_mentor!
+    current_mentor.present?
+  end
 end
