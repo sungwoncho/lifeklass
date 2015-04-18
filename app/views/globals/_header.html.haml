@@ -16,7 +16,7 @@
       %ul.nav.navbar-nav.navbar-right
         - if user_signed_in?
           %li
-            = link_to 'Profile', users_app.user_path(current_user)
+            = link_to 'Dashbaord', users_app.user_path(current_user)
           %li
             = link_to 'Logout', users_app.destroy_user_session_path, method: :delete
         - else

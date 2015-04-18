@@ -13,5 +13,6 @@ module Courses
     scope :by_category, -> (categories) {
       joins(:categories).where(categories: {name: categories}) if categories.present?
     }
+    scope :by_user_id,  -> (user_id) { joins(:enrollments).where(enrollments: {user_id: user_id}) }
   end
 end

@@ -3,6 +3,7 @@ module Users
     before_action :set_user, only: :show
 
     def show
+      @user_facade = UserFacade.new(@user, self)
     end
 
     private

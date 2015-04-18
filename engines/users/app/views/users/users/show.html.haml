@@ -1,4 +1,6 @@
 .container
   .row
     .col-md-12
-      = "Hey, #{@user.firstname}"
+      %h1 Dashboard
+
+      = @user_facade.enrolled_course_list(self)
