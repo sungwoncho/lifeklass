@@ -1,6 +1,6 @@
 module LoginMacro
   def login_user
-    @user = User.new
+    @user = Users::User.new
     allow(controller).to receive(:current_user).and_return(@user)
     allow(controller).to receive(:authenticate_user!).and_return(true)
   end
@@ -12,7 +12,7 @@ module LoginMacro
 
   def login_mentor
     @mentor = Mentors::Mentor.new
-    @user = User.new
+    @user = Users::User.new
 
     allow(controller).to receive(:current_mentor).and_return(@mentor)
     allow(controller).to receive(:current_user).and_return(@user)

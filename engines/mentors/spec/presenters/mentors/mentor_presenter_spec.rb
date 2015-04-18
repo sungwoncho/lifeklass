@@ -4,7 +4,7 @@ RSpec.describe Mentors::MentorPresenter, type: :presenter do
   let(:mentor_presenter) { Mentors::MentorPresenter.new(mentor) }
 
   describe '#firstname' do
-    let(:user) { instance_double(User, name: 'Marco Polo') }
+    let(:user) { instance_double(Users::User, name: 'Marco Polo') }
     let(:mentor) { Mentors::Mentor.new }
 
     it 'returns the firstname' do
@@ -15,7 +15,7 @@ RSpec.describe Mentors::MentorPresenter, type: :presenter do
   end
 
   describe '#lastname' do
-    let(:user) { instance_double(User, name: 'Marco Polo') }
+    let(:user) { instance_double(Users::User, name: 'Marco Polo') }
     let(:mentor) { Mentors::Mentor.new }
 
     it 'returns the lastname' do

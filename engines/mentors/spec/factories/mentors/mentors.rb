@@ -1,5 +1,5 @@
 FactoryGirl.define do
   factory :mentor, class: Mentors::Mentor do
-    user { User.first || create(:user) }
+    user { ::Users::User.first || create(:user) }
   end
 end

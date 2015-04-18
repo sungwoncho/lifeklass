@@ -1,4 +1,4 @@
-require 'rails_helper'
+require File.expand_path('engines/users/spec/spec_helper')
 
 # Specs in this file have access to a helper object that includes
 # the UsersHelper. For example:
@@ -10,5 +10,5 @@ require 'rails_helper'
 #     end
 #   end
 # end
-RSpec.describe UsersHelper, type: :helper do
+RSpec.describe Users::UsersHelper, type: :helper do
 end

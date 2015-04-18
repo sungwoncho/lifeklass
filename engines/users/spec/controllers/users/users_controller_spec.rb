@@ -1,6 +1,8 @@
-require 'rails_helper'
+require File.expand_path('engines/users/spec/spec_helper')
 
-RSpec.describe UsersController, type: :controller do
+RSpec.describe Users::UsersController, type: :controller do
+  routes { Users::Engine.routes }
+
   let(:user) { create(:user) }
 
   before(:each) do

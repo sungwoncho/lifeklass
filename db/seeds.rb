@@ -9,7 +9,7 @@ require "faker"
 
 include ActionView::Helpers::TextHelper
 
-User.destroy_all
+Users::Users::User.destroy_all
 Mentors::Mentor.destroy_all
 Courses::Course.destroy_all
 Courses::Category.destroy_all
@@ -18,16 +18,16 @@ Courses::CourseCategory.destroy_all
 puts "Destroyed all previously existing records."
 
 (1..10).each do |n|
-  User.create!(
+  Users::User.create!(
   name: Faker::Name.name,
   email: "user_#{n}@example.com",
   password: "pass1234"
   )
 end
 
-puts "Created #{pluralize User.count, 'user'}."
+puts "Created #{pluralize Users::User.count, 'user'}."
 
-User.pluck(:id).sample(3).each do |n|
+Users::User.pluck(:id).sample(3).each do |n|
   Mentors::Mentor.create!(
     user_id: n
   )

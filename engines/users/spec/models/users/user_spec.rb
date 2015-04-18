@@ -1,6 +1,6 @@
-require 'rails_helper'
+require File.expand_path('engines/users/spec/spec_helper')
 
-RSpec.describe User, type: :model do
+RSpec.describe Users::User, type: :model do
   describe 'association' do
     it { should have_one(:mentor) }
     it { should have_many(:enrollments) }
