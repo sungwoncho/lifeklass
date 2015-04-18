@@ -57,5 +57,5 @@ RSpec.configure do |config|
   # Use test helpers in controller specs (e.g. sign_in)
   config.include Devise::TestHelpers, type: :controller
 
-  config.include LoginMacro
+  config.include Macros::Login
 end
