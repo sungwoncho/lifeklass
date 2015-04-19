@@ -2,6 +2,7 @@ module Courses
   class ContentsController < ApplicationController
 
     def index
+      @contents_facade = ContentsFacade.new(params[:course_id], self)
     end
 
     def show

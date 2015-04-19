@@ -7,6 +7,7 @@ RSpec.describe Courses::Category do
 
   describe 'associations' do
     it { should have_many(:course_categories) }
+    it { should have_many(:courses).through(:course_categories) }
   end
 
   it 'has a valid factory' do

@@ -1,0 +1,12 @@
+.container
+  .row
+    .col-md-12
+      %h1.mb30= @contents_facade.course_title
+
+
+  .row
+    .col-md-3
+      = render partial: 'sidebar'
+
+    .col-md-9
+      = render partial: 'content', collection: @contents_facade.contents
