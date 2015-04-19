@@ -9,7 +9,7 @@ require "faker"
 
 include ActionView::Helpers::TextHelper
 
-Users::Users::User.destroy_all
+Users::User.destroy_all
 Mentors::Mentor.destroy_all
 Courses::Course.destroy_all
 Courses::Category.destroy_all
@@ -37,7 +37,7 @@ puts "Created #{pluralize Mentors::Mentor.count, 'mentor'}."
 
 20.times do |n|
   Courses::Course.create!(
-    mentor_id: Mentors::Mentor.pluck(:id).sample,
+    owner: Mentors::Mentor.all.sample,
     title: Faker::Company.catch_phrase,
     description: Faker::Lorem.paragraphs(3).join
   )

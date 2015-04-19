@@ -20,4 +20,27 @@ RSpec.describe Mentors::Mentor, type: :model do
       mentor.name
     end
   end
+
+  describe '#is_a_member_of?' do
+    let(:music_group) { create(:organization) }
+
+    context 'when the member belongs to the organization' do
+      it 'returns true' do
+        walt = create(:mentor, organization: music_group)
+
+        result = walt.is_a_member_of?(music_group)
+        expect(result).to eq true
+      end
+    end
+
+    context 'when the member does not belong to the organization' do
+      it 'returns false' do
+        good_living = Mentors::Organization.new
+        walt = create(:mentor, organization: good_living)
+
+        result = walt.is_a_member_of?(music_group)
+        expect(result).to eq false
+      end
+    end
+  end
 end

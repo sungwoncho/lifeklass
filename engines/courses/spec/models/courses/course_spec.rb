@@ -12,4 +12,24 @@ RSpec.describe Courses::Course, type: :model do
   it 'has a valid factory' do
     expect(build(:course)).to be_valid
   end
+
+  describe '#owner_is_organization?' do
+    let(:course) { Courses::Course.new }
+
+    context 'when the owner type is organization' do
+      it 'returns true' do
+        allow(course).to receive(:owner_type).and_return("Mentors::Organization")
+
+        expect(course.owner_is_organization?).to eq true
+      end
+    end
+
+    context 'when the owner type is not organization' do
+      it 'returns false' do
+        allow(course).to receive(:owner_type).and_return("Mentors::Mentor")
+
+        expect(course.owner_is_organization?).to eq false
+      end
+    end
+  end
 end

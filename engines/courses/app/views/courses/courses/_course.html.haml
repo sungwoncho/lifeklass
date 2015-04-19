@@ -2,7 +2,7 @@
   .col-md-12
     %h4
       = link_to course.title, course
-      %small= course.mentor.name
+      %small= course.owner.name
 
     = truncate(course.description, length: 300)
     .categories.mt10

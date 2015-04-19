@@ -16,5 +16,13 @@ module Courses
     scope :by_user_id,    -> (user_id) {
       joins(:enrollments).where(enrollments: {user_id: user_id})
     }
+
+    def owner_is_organization?
+      owner_type == 'Mentors::Organization'
+    end
+
+    def self.get_owner_by_id(course_id)
+      find(course_id).owner
+    end
   end
 end
