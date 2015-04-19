@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150419074511) do
+ActiveRecord::Schema.define(version: 20150419102648) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,26 +43,26 @@ ActiveRecord::Schema.define(version: 20150419074511) do
 
   add_index "courses", ["owner_type", "owner_id"], name: "index_courses_on_owner_type_and_owner_id", using: :btree
 
-  create_table "courses_content_groups", force: :cascade do |t|
+  create_table "courses_contents", force: :cascade do |t|
+    t.string   "title"
+    t.text     "body"
+    t.integer  "course_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "menu_id"
+  end
+
+  add_index "courses_contents", ["course_id"], name: "index_courses_contents_on_course_id", using: :btree
+  add_index "courses_contents", ["menu_id"], name: "index_courses_contents_on_menu_id", using: :btree
+
+  create_table "courses_menus", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "course_id"
   end
 
-  add_index "courses_content_groups", ["course_id"], name: "index_courses_content_groups_on_course_id", using: :btree
-
-  create_table "courses_contents", force: :cascade do |t|
-    t.string   "title"
-    t.text     "body"
-    t.integer  "course_id"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
-    t.integer  "content_group_id"
-  end
-
-  add_index "courses_contents", ["content_group_id"], name: "index_courses_contents_on_content_group_id", using: :btree
-  add_index "courses_contents", ["course_id"], name: "index_courses_contents_on_course_id", using: :btree
+  add_index "courses_menus", ["course_id"], name: "index_courses_menus_on_course_id", using: :btree
 
   create_table "enrollments", force: :cascade do |t|
     t.integer  "user_id"
