@@ -4,7 +4,8 @@ RSpec.describe Mentors::Mentor, type: :model do
   describe 'association' do
     it { should belong_to(:user) }
     it { should have_many(:courses) }
-    it { should belong_to(:organization) }
+    it { should have_many(:mentor_organizations) }
+    it { should have_many(:organizations).through(:mentor_organizations) }
   end
 
   it 'has a valid factory' do
@@ -26,7 +27,8 @@ RSpec.describe Mentors::Mentor, type: :model do
 
     context 'when the member belongs to the organization' do
       it 'returns true' do
-        walt = create(:mentor, organization: music_group)
+        walt = create(:mentor)
+        create(:mentor_organization, mentor: walt, organization: music_group)
 
         result = walt.is_a_member_of?(music_group)
         expect(result).to eq true
@@ -35,8 +37,7 @@ RSpec.describe Mentors::Mentor, type: :model do
 
     context 'when the member does not belong to the organization' do
       it 'returns false' do
-        good_living = Mentors::Organization.new
-        walt = create(:mentor, organization: good_living)
+        walt = create(:mentor)
 
         result = walt.is_a_member_of?(music_group)
         expect(result).to eq false
