@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150419022021) do
+ActiveRecord::Schema.define(version: 20150419024159) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,23 +42,23 @@ ActiveRecord::Schema.define(version: 20150419022021) do
 
   add_index "courses", ["mentor_id"], name: "index_courses_on_mentor_id", using: :btree
 
-  create_table "courses_contents", force: :cascade do |t|
-    t.string   "title"
-    t.text     "body"
-    t.integer  "course_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer  "group_id"
-  end
-
-  add_index "courses_contents", ["course_id"], name: "index_courses_contents_on_course_id", using: :btree
-  add_index "courses_contents", ["group_id"], name: "index_courses_contents_on_group_id", using: :btree
-
-  create_table "courses_groups", force: :cascade do |t|
+  create_table "courses_content_groups", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "courses_contents", force: :cascade do |t|
+    t.string   "title"
+    t.text     "body"
+    t.integer  "course_id"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.integer  "content_group_id"
+  end
+
+  add_index "courses_contents", ["content_group_id"], name: "index_courses_contents_on_content_group_id", using: :btree
+  add_index "courses_contents", ["course_id"], name: "index_courses_contents_on_course_id", using: :btree
 
   create_table "enrollments", force: :cascade do |t|
     t.integer  "user_id"
