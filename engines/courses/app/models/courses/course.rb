@@ -2,7 +2,7 @@ module Courses
   class Course < ActiveRecord::Base
     self.table_name = 'courses'
 
-    belongs_to :mentor, class_name: "Mentors::Mentor"
+    belongs_to :owner, polymorphic: true
     has_many :enrollments
     has_many :users, through: :enrollments
     has_many :course_categories

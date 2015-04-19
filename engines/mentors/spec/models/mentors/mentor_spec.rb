@@ -4,6 +4,7 @@ RSpec.describe Mentors::Mentor, type: :model do
   describe 'association' do
     it { should belong_to(:user) }
     it { should have_many(:courses) }
+    it { should belong_to(:organization) }
   end
 
   it 'has a valid factory' do

@@ -4,7 +4,8 @@ module Mentors
     self.table_name = 'mentors'
 
     belongs_to :user, class_name: "Users::User"
-    has_many :courses, class_name: "Courses::Course"
+    belongs_to :organization
+    has_many :courses, class_name: "Courses::Course", as: :owner
 
     delegate :name, to: :user
   end

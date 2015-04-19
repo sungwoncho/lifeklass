@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150419024603) do
+ActiveRecord::Schema.define(version: 20150419034037) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,14 +33,15 @@ ActiveRecord::Schema.define(version: 20150419024603) do
   add_index "course_categories", ["course_id"], name: "index_course_categories_on_course_id", using: :btree
 
   create_table "courses", force: :cascade do |t|
-    t.integer  "mentor_id"
     t.string   "title"
     t.text     "description"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.integer  "owner_id"
+    t.string   "owner_type"
   end
 
-  add_index "courses", ["mentor_id"], name: "index_courses_on_mentor_id", using: :btree
+  add_index "courses", ["owner_type", "owner_id"], name: "index_courses_on_owner_type_and_owner_id", using: :btree
 
   create_table "courses_content_groups", force: :cascade do |t|
     t.string   "name"
@@ -75,11 +76,23 @@ ActiveRecord::Schema.define(version: 20150419024603) do
 
   create_table "mentors", force: :cascade do |t|
     t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.integer  "organization_id"
   end
 
+  add_index "mentors", ["organization_id"], name: "index_mentors_on_organization_id", using: :btree
   add_index "mentors", ["user_id"], name: "index_mentors_on_user_id", using: :btree
+
+  create_table "mentors_organizations", force: :cascade do |t|
+    t.string   "name"
+    t.text     "description"
+    t.integer  "mentor_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "mentors_organizations", ["mentor_id"], name: "index_mentors_organizations_on_mentor_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false

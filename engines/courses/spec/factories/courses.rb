@@ -1,8 +1,12 @@
 FactoryGirl.define do
   factory :course, class: Courses::Course do
-    mentor { Mentors::Mentor.first || create(:mentor) }
+    owner { Mentors::Mentor.first || create(:mentor) }
     title 'Self Improvement Course'
     description 'Course description about the self improvement course'
+
+    trait :by_organization do
+      owner { Mentors::Organization.first || create(:organization) }
+    end
 
     trait :self_improvement do
       after(:create) do |course|
