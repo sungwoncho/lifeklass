@@ -9,16 +9,20 @@ module Mentors
 
     delegate :name, to: :user
 
-    # def is_instructor_of?(course)
-    #   if course.owner_is_organization?
-    #     is_a_member_of?(course.organization)
-    #   else
-    #     is_an_owner_of?(course)
-    #   end
-    # end
+    def is_instructor_of?(course)
+      if course.owner_is_organization?
+        is_member_of?(course.owner)
+      else
+        is_owner_of_course?(course)
+      end
+    end
 
-    def is_a_member_of?(organization)
+    def is_member_of?(organization)
       Mentors::MentorOrganization.get_members_by_id(organization.id).include?(self)
+    end
+
+    def is_owner_of_course?(course)
+      course.owner == self
     end
   end
 end
