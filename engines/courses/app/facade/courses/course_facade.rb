@@ -11,8 +11,12 @@ module Courses
       Courses::Menu.by_course_id(@course)
     end
 
-    def instructors
+    def mentors
+      Mentors::Mentorship.get_mentors_by_course_id(course.id)
+    end
 
+    def mentor_names
+      mentors.map(&:name)
     end
 
     private

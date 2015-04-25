@@ -1,4 +1,4 @@
 module Mentors
-  class MentorPresenter < ::UserPresenter
+  class MentorPresenter < ::Users::UserPresenter
   end
 end
