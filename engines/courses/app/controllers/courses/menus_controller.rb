@@ -2,9 +2,9 @@ module Courses
   class MenusController < ApplicationController
     before_action :authorize_access, only: [:index, :show]
     before_action :authorize_instructor, except: [:index, :show]
+    before_action :set_course
 
     def index
-      @course = Courses::CourseFacade.new(course)
     end
 
     def show
@@ -31,8 +31,8 @@ module Courses
       Courses::Course.find(params[:course_id])
     end
 
-    def menus
-      Courses::Menu.find_by(course_id: params[:course_id])
+    def set_course
+      @course = Courses::CourseFacade.new(course, self)
     end
 
     def authorize_access

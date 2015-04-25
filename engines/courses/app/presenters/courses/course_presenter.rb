@@ -8,5 +8,6 @@ module Courses
         h.render partial: 'courses/enrollments/enroll_button', locals: { course: model }
       end
     end
+
   end
 end

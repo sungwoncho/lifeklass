@@ -1,7 +1,7 @@
 require "rails_helper"
 
-describe UserPresenter, type: :presenter do
-  let(:user_presenter) { UserPresenter.new(user, view_context) }
+describe Users::UserPresenter, type: :presenter do
+  let(:user_presenter) { Users::UserPresenter.new(user, view_context) }
   let(:view_context) { nil }
 
   describe '#firstname' do
