@@ -1,5 +1,6 @@
 module Courses
   class CoursesController < ApplicationController
+    layout 'application'
     skip_before_action :authenticate_user!, only: :index
     before_action :authenticate_mentor!, only: [:new, :edit, :create, :update, :destroy]
     before_action :set_course, only: [:show, :edit, :update, :destroy]

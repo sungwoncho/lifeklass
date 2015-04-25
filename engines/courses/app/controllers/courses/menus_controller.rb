@@ -4,7 +4,7 @@ module Courses
     before_action :authorize_instructor, except: [:index, :show]
 
     def index
-      @course_facade = Courses::CourseFacade.new(course)
+      @course = Courses::CourseFacade.new(course)
     end
 
     def show

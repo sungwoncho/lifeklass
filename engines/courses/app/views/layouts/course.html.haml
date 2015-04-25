@@ -1,0 +1,10 @@
+= content_for :course do
+  .container
+    .row
+      .col-md-3
+        = render @course.menus
+      .col-md-9
+        = yield
+
+
+= render template: 'layouts/application'

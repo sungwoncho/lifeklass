@@ -9,12 +9,10 @@ module Mentors
 
     delegate :name, to: :user
 
+    scope :by_course_id, -> course_id { joins(:courses).where("courses.id = ?", course_id) }
+
     def is_instructor_of?(course)
-      if course.owner_is_organization?
-        is_member_of?(course.owner)
-      else
-        is_owner_of_course?(course)
-      end
+      Mentors::Mentorship.get_mentors_by_course_id(course.id).include?(self)
     end
 
     def is_member_of?(organization)

@@ -78,45 +78,22 @@ RSpec.describe Mentors::Mentor, type: :model do
   end
 
   describe '#is_instructor_of?' do
-    context 'when the course is owned by organization' do
-      let(:course) { create(:course, :by_organization) }
-      let(:mentor) { Mentors::Mentor.new }
+    let(:course) { Courses::Course.new }
+    let(:mentor) { Mentors::Mentor.new }
 
-      context 'when the mentor is a member of that organization' do
-        it 'returns true' do
-          allow(mentor).to receive(:is_member_of?).with(course.owner).and_return(true)
+    context 'if the mentor is an instructor of the course' do
+      it 'returns true' do
+        create(:mentorship, mentor: mentor, course: course)
 
-          expect(mentor.is_instructor_of?(course)).to eq true
-        end
-      end
-
-      context 'when the mentor is not a member of that organization' do
-        it 'returns false' do
-          allow(mentor).to receive(:is_member_of?).with(course.owner).and_return(false)
-
-          expect(mentor.is_instructor_of?(course)).to eq false
-        end
+        result = mentor.is_instructor_of?(course)
+        expect(result).to eq true
       end
     end
 
-    context 'when the course is owned by a mentor' do
-      let(:course) { create(:course) }
-      let(:mentor) { Mentors::Mentor.new }
-
-      context 'when the mentor is that mentor' do
-        it 'returns true' do
-          allow(mentor).to receive(:is_owner_of_course?).and_return(true)
-
-          expect(mentor.is_instructor_of?(course)).to eq true
-        end
-      end
-
-      context 'when the mentor is not that mentor' do
-        it 'returns false' do
-          allow(mentor).to receive(:is_owner_of_course?).and_return(false)
-
-          expect(mentor.is_instructor_of?(course)).to eq false
-        end
+    context 'if the mentor is not an instructor of the course' do
+      it 'returns false' do
+        result = mentor.is_instructor_of?(course)
+        expect(result).to eq false
       end
     end
   end

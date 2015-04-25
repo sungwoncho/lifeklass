@@ -24,5 +24,9 @@ module Courses
     def self.get_owner_by_id(course_id)
       find(course_id).owner
     end
+
+    def instructors
+      Mentors::Mentorship.get_mentors_by_course_id(self.id)
+    end
   end
 end

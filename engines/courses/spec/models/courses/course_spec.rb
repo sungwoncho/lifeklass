@@ -32,4 +32,14 @@ RSpec.describe Courses::Course, type: :model do
       end
     end
   end
+
+  describe '#instructors' do
+    it 'asks Mentors::Mentorship to get all mentors for the course' do
+      course = Courses::Course.new
+      allow(course).to receive(:id).and_return(1)
+
+      expect(Mentors::Mentorship).to receive(:get_mentors_by_course_id).with(1)
+      course.instructors
+    end
+  end
 end

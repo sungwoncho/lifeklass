@@ -13,6 +13,7 @@ Users::User.destroy_all
 Mentors::Mentor.destroy_all
 Mentors::Organization.destroy_all
 Mentors::MentorOrganization.destroy_all
+Mentors::Mentorship.destroy_all
 Courses::Course.destroy_all
 Courses::Category.destroy_all
 Courses::CourseCategory.destroy_all
@@ -61,6 +62,13 @@ puts "Created #{pluralize Mentors::Organization.count, 'organization'} and estab
     owner: Mentors::Mentor.all.sample,
     title: Faker::Company.catch_phrase,
     description: Faker::Lorem.paragraphs(3).join
+  )
+end
+
+Courses::Course.all.each do |course|
+  Mentors::Mentorship.create!(
+    course_id: course.id,
+    mentor_id: course.owner.id
   )
 end
 

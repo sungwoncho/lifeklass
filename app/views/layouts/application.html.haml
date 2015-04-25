@@ -8,4 +8,4 @@
   %body{id: "#{ controller_name }"}
     = render 'globals/header'
 
-    = yield
+    = content_for?(:course) ? yield(:course) : yield
