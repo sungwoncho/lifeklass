@@ -11,9 +11,13 @@ include ActionView::Helpers::TextHelper
 
 Users::User.destroy_all
 Mentors::Mentor.destroy_all
+Mentors::Organization.destroy_all
+Mentors::MentorOrganization.destroy_all
 Courses::Course.destroy_all
 Courses::Category.destroy_all
 Courses::CourseCategory.destroy_all
+Courses::Menu.destroy_all
+Courses::Content.destroy_all
 
 puts "Destroyed all previously existing records."
 
@@ -27,13 +31,30 @@ end
 
 puts "Created #{pluralize Users::User.count, 'user'}."
 
-Users::User.pluck(:id).sample(3).each do |n|
+Users::User.pluck(:id).sample(5).each do |n|
   Mentors::Mentor.create!(
     user_id: n
   )
 end
 
 puts "Created #{pluralize Mentors::Mentor.count, 'mentor'}."
+
+Mentors::Mentor.first(2).each do |mentor|
+  Mentors::Organization.create!(
+    name: Faker::Company.name,
+    description: Faker::Lorem.paragraphs(3),
+    mentor_id: mentor.id
+  )
+end
+
+Mentors::Mentor.last(2).reverse.each do |mentor|
+  Mentors::MentorOrganization.create!(
+    mentor_id: mentor.id,
+    organization_id: Mentors::Organization.first
+  )
+end
+
+puts "Created #{pluralize Mentors::Organization.count, 'organization'} and established membership."
 
 20.times do |n|
   Courses::Course.create!(
@@ -60,4 +81,28 @@ Courses::Course.all.each do |course|
   )
 end
 
-puts "Created #{pluralize Courses::CourseCategory.count, 'categorization'}"
+puts "Created #{pluralize Courses::CourseCategory.count, 'categorization'}."
+
+Courses::Course.all.each do |course|
+  6.times do
+    Courses::Menu.create!(
+      name: Faker::Lorem.word,
+      course_id: course.id
+    )
+  end
+end
+
+puts "Created #{pluralize Courses::Menu.count, 'menu'}."
+
+Courses::Menu.all.each do |menu|
+  12.times do
+    Courses::Content.create!(
+      title: Faker::Company.catch_phrase,
+      body: Faker::Lorem.paragraphs(5),
+      menu_id: menu.id,
+      course_id: menu.course_id
+    )
+  end
+end
+
+puts "Created #{pluralize Courses::Content.count, 'content'}."
