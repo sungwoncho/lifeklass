@@ -23,6 +23,7 @@ group :development, :test do
   gem 'powder'
   gem 'pry-rails'
   gem 'spring-commands-rspec'
+  gem 'pry-remote'
 end
 
 group :test do
@@ -47,4 +48,4 @@ gem 'simple_form'
 gem 'will_paginate', '~> 3.0.7'
 gem 'draper', '~> 2.1.0'
 gem 'will_paginate-bootstrap', '~> 1.0.1'
-gem 'pundit', '~> 0.3.0'
+gem 'pundit', '~> 1.0.0'
