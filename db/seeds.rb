@@ -92,9 +92,9 @@ end
 puts "Created #{pluralize Courses::CourseCategory.count, 'categorization'}."
 
 Courses::Course.all.each do |course|
-  6.times do
+  6.times do |n|
     Courses::Menu.create!(
-      name: Faker::Lorem.word,
+      name: "menu_#{n}",
       course_id: course.id
     )
   end
