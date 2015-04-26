@@ -3,7 +3,7 @@ module Courses
     has_many :contents
     belongs_to :course
 
-    validates :name, uniqueness: true
+    validates :name, uniqueness: { scope: :course_id }
 
     scope :by_course_id, -> course_id { where(course_id: course_id) }
   end

@@ -7,6 +7,6 @@ RSpec.describe Courses::Menu, type: :model do
   end
 
   describe 'validation' do
-    it { should validate_uniqueness_of(:name) }
+    it { should validate_uniqueness_of(:name).scoped_to(:course_id) }
   end
 end
