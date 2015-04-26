@@ -23,7 +23,7 @@ module Courses
 
     def current_menu_contents
       return unless current_menu
-      Courses::Content.by_menu_id(current_menu.id).by_course_id(@course)
+      Courses::Content.by_menu_id(current_menu.id).by_course_id(@course).paginate(page: c.params[:page], per_page: 10)
     end
 
     def current_content
