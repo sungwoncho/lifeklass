@@ -6,6 +6,8 @@ module Courses
     # end
 
     def show
+      @course = CourseFacade.new(course, self)
+      @content = Content.find(params[:id])
     end
 
     def new
@@ -21,6 +23,16 @@ module Courses
     end
 
     def destroy
+    end
+
+    private
+
+    def course
+      Courses::Course.find(params[:course_id])
+    end
+
+    def menu
+      Courses::Menu.find(params[:menu_id])
     end
   end
 end

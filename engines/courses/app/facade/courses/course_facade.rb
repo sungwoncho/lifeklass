@@ -14,7 +14,7 @@ module Courses
     end
 
     def current_menu
-      Courses::Menu.find(menu_params).name if menu_params
+      Courses::Menu.find(menu_params) if menu_params
     end
 
     def mentors
