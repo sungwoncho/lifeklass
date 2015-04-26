@@ -106,7 +106,7 @@ Courses::Menu.all.each do |menu|
   12.times do
     Courses::Content.create!(
       title: Faker::Company.catch_phrase,
-      body: Faker::Lorem.paragraphs(5),
+      body: Faker::Lorem.paragraphs(5).join,
       menu_id: menu.id,
       course_id: menu.course_id
     )
