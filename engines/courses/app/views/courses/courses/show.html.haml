@@ -9,3 +9,4 @@
       %p= @course.description
 
       #enrollment-action= @course.enroll_action_for(current_user)
+      #go-to-course= @course.go_to_course(current_user)

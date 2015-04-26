@@ -1,2 +1,3 @@
 :plain
   $('#enrollment-action').html("#{ j @course.enroll_action_for(current_user) }");
+  $('#go-to-course').html("#{ j @course.go_to_course(current_user) }");

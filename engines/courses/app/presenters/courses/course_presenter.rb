@@ -9,5 +9,11 @@ module Courses
       end
     end
 
+    def go_to_course(user)
+      if user.enrolled_in?(model)
+        h.render partial: 'courses/enrollments/go_to_course', locals: { course: model }
+      end
+    end
+
   end
 end

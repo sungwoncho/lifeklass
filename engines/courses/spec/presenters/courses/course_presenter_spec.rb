@@ -25,4 +25,15 @@ RSpec.describe Courses::CoursePresenter, type: :presenter do
       end
     end
   end
+
+  describe '#go_to_course' do
+    context 'when user is enrolled' do
+      it 'displays the go to class button' do
+        create(:enrollment, user: user, course: course)
+        result = course_presenter.go_to_course(user)
+
+        expect(result).to match %(Go to course)
+      end
+    end
+  end
 end
