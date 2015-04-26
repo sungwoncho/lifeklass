@@ -3,4 +3,4 @@
   %hr
   = render course.menus
   %hr
-  %li= link_to 'Customize', courses_app.menu_course_menus_path(course.id) if policy(course.course).update?
+  %li= link_to 'Customize menus', courses_app.menu_course_menus_path(course.id) if policy(course.course).update?

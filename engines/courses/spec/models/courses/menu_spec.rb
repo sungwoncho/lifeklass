@@ -9,4 +9,8 @@ RSpec.describe Courses::Menu, type: :model do
   describe 'validation' do
     it { should validate_uniqueness_of(:name).scoped_to(:course_id) }
   end
+
+  it 'has a valid factory' do
+    expect(build(:menu)).to be_valid
+  end
 end

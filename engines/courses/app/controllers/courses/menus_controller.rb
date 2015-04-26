@@ -1,10 +1,9 @@
 module Courses
   class MenusController < ApplicationController
-    layout :layout
 
     before_action :authorize_access!, only: [:index, :show]
     before_action :authorize_instructor!, except: [:index, :show]
-    before_action :set_course
+    before_action :set_course, only: [:index, :show, :edit]
 
     def index
     end
@@ -12,16 +11,20 @@ module Courses
     def show
     end
 
-    def new
-    end
-
     def edit
     end
 
     def create
+      @menu = Course::Menu.new(menu_params)
+      redirect_to course_menu_path(course, @menu) if @menu.save!
     end
 
     def update
+      @menu = Courses::Menu.find(params[:id])
+
+      if @menu.update_attributes!(menu_params)
+        redirect_to edit_course_menu_path(course, @menu)
+      end
     end
 
     def destroy
@@ -37,12 +40,9 @@ module Courses
       @course = Courses::CourseFacade.new(course, self)
     end
 
-    def layout
-      if action_name == 'show'
-        'course'
-      else
-        'application'
-      end
+    def menu_params
+      params.require(:menu).permit(:name)
     end
+
   end
 end
