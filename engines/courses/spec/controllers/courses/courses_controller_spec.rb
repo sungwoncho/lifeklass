@@ -12,7 +12,7 @@ RSpec.describe Courses::CoursesController, type: :controller do
     it "decorates and assigns the requested course as @course" do
       course = create(:course)
       get :show, id: course
-      expect(assigns(:course).object).to eq(course)
+      expect(assigns(:course).course).to eq(course)
     end
   end
 
