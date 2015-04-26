@@ -1,3 +1,2 @@
-= content.title
-
-= truncate(content.body, length: 200)
+.content
+  = link_to content.title, courses_app.course_menu_content_path(content.course, content.menu, content)

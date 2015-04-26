@@ -12,7 +12,7 @@ crumb :menu do |menu|
 end
 
 crumb :content do |content|
-  link content.title, courses_app.course_menu_content_path(content.menu.course, content.menu, content)
+  link content.title, courses_app.course_menu_content_path(content.course, content.menu, content)
   parent :menu, content.menu
 end
 

@@ -6,5 +6,6 @@ module Courses
     belongs_to :menu
 
     scope :by_course_id, -> (course_id) { where(course_id: course_id) }
+    scope :by_menu_id,   -> (menu_id) { where(menu_id: menu_id) }
   end
 end

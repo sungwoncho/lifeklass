@@ -1,4 +1,3 @@
 - breadcrumb :menu, @course.current_menu
 
-- @course.current_menu.contents.each do |content|
-  = link_to 'a', courses_app.course_menu_content_path(@course.course.id, @course.current_menu, content)
+= render @course.current_menu_contents
