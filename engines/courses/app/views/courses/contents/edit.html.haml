@@ -1,0 +1,8 @@
+= simple_form_for [@course.course, @course.current_menu, @course.current_content] do |f|
+  = f.input :title
+  = f.input :body, input_html: { rows: 15 }
+
+  = f.button :submit
+
+%h3 Danger zone
+= link_to 'Delete', course_menu_content_path(@course.course, @course.current_menu, @course.current_content), method: :delete, class: 'btn btn-danger btn-sm', data: { confirm: 'Are you sure?' }

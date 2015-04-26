@@ -23,7 +23,7 @@ module Courses
     def update
       @menu = Courses::Menu.find(params[:id])
 
-      if @menu.update_attributes!(menu_params)
+      if @menu.update!(menu_params)
         redirect_to edit_course_menu_path(course, @menu)
       end
     end

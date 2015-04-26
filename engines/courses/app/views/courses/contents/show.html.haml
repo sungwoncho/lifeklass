@@ -1,3 +1,5 @@
 %h1= @course.current_content.title
 
 = @course.current_content.body
+
+= link_to 'Edit content', courses_app.edit_course_menu_content_path(@course.id, @course.current_menu.id, @course.current_content.id)

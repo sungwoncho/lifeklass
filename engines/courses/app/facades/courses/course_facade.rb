@@ -30,7 +30,12 @@ module Courses
       return unless c.controller_name == 'contents'
 
       current_content = Courses::Content.find(c.params[:id])
-      Courses::ContentFacade.new(current_content, c)
+      # Courses::ContentFacade.new(current_content, c)
+    end
+
+    def new_content
+      return unless current_menu
+      Courses::Content.new(course: @course, menu: current_menu)
     end
 
     private
