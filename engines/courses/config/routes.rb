@@ -1,6 +1,5 @@
 Courses::Engine.routes.draw do
-  resources :courses, except: :show do
-    get 'info' => 'courses#show', on: :member
+  resources :courses do
 
     member do
       resource :enrollment, only: [:create, :destroy]
@@ -10,4 +9,6 @@ Courses::Engine.routes.draw do
       resources :contents, path: '', except: :index
     end
   end
+
+  resources :course_information, only: [:show, :edit, :update]
 end
