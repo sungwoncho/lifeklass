@@ -1,7 +1,2 @@
-%h1= @course.title
-- @course.mentors.each do |mentor|
-  %span.mentor-link
-  = link_to mentor.name, mentors_app.mentor_path(mentor)
-
 .description
   = @course.description

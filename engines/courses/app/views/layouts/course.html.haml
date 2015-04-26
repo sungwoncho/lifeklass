@@ -1,10 +1,19 @@
 = content_for :course do
   .container
+
+    .row
+      .col-md-12.course-head
+        %h1= link_to @course.title, courses_app.course_path(@course.id), class: 'course-title'
+
+        By
+        - @course.mentors.each do |mentor|
+          %span.mentor-link
+          = link_to mentor.name, mentors_app.mentor_path(mentor)
+
     .row
       .col-md-3
         = render @course.menus
       .col-md-9
-        = breadcrumbs style: :bootstrap
         = yield
 
 

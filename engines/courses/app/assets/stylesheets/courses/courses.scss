@@ -1,3 +1,14 @@
 // Place all the styles related to the courses controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+#courses, #menus, #contents {
+  .course-head {
+    padding: 10px 20px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #DDD;
+  }
+
+  .course-title {
+    color: inherit;
+  }
+}
