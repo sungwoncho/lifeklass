@@ -28,6 +28,10 @@ module Courses
     end
 
     def destroy
+      @menu = Courses::Menu.find(params[:id])
+
+      @menu.destroy!
+      redirect_to menu_course_menus_path(course)
     end
 
     private

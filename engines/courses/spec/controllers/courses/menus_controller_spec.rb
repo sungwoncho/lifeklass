@@ -19,4 +19,15 @@ RSpec.describe Courses::MenusController, type: :controller do
       expect(menu.name).to eq 'Week 2'
     end
   end
+
+  describe 'DELETE destroy' do
+    it 'destroys the menu' do
+      menu = create(:menu, name: 'Week 1')
+      course = menu.course
+
+      expect {
+        delete :destroy, course_id: course.id, id: menu.id
+      }.to change(Courses::Menu, :count).by(-1)
+    end
+  end
 end
