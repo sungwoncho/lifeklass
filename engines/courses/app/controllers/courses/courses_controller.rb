@@ -1,6 +1,6 @@
 module Courses
   class CoursesController < ApplicationController
-    layout 'application'
+    layout :layout
 
     skip_before_action :authenticate_user!, only: :index
     before_action :authenticate_mentor!, only: [:new, :edit, :create, :update, :destroy]
@@ -11,6 +11,7 @@ module Courses
     end
 
     def show
+      @course = CourseFacade.new(course, self)
     end
 
     def new
@@ -45,6 +46,10 @@ module Courses
 
       def course_params
         params[:course]
+      end
+
+      def layout
+        action_name == 'show' ? 'course' : 'application'
       end
   end
 end

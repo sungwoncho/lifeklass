@@ -1,5 +1,6 @@
 module Courses
   class MenusController < ApplicationController
+    layout :layout
 
     before_action :authorize_access!, only: [:index, :show]
     before_action :authorize_instructor!, except: [:index, :show]
@@ -34,6 +35,14 @@ module Courses
 
     def set_course
       @course = Courses::CourseFacade.new(course, self)
+    end
+
+    def layout
+      if action_name == 'show'
+        'course'
+      else
+        'application'
+      end
     end
   end
 end
