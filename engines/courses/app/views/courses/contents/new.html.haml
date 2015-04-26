@@ -1,5 +1,5 @@
 = simple_form_for [@course.course, @course.current_menu, @course.new_content] do |f|
   = f.input :title
-  = f.input :body, input_html: { rows: 15 }
+  = f.input :body, as: :ckeditor, input_html: { ckeditor: { toolbar: 'mini' } }
 
   = f.button :submit

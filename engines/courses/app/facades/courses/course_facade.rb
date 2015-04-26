@@ -28,7 +28,6 @@ module Courses
 
     def current_content
       return unless c.controller_name == 'contents'
-
       current_content = Courses::Content.find(c.params[:id])
     end
 
