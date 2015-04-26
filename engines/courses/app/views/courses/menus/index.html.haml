@@ -1,9 +1,17 @@
 .text-center
-  %h3
-    Customizing your menus
+  %h3 Customize your menus
 
   %ul.list-unstyled
     - @course.menus.each do |menu|
       %li
         = menu.name
         = link_to 'Edit', courses_app.edit_course_menu_path(@course.id, menu.id)
+
+  %h3 Add new menu
+
+  .new-menu
+    = simple_form_for :menu, url: courses_app.course_menus_path(@course.id) do |f|
+      = f.input :name
+      = f.input :position
+
+      = f.button :submit

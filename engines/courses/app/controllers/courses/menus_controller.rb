@@ -15,7 +15,8 @@ module Courses
     end
 
     def create
-      @menu = Course::Menu.new(menu_params)
+      @menu = Courses::Menu.new(menu_params)
+      @menu.course = course
       redirect_to course_menu_path(course, @menu) if @menu.save!
     end
 

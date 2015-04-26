@@ -9,8 +9,19 @@ RSpec.describe Courses::MenusController, type: :controller do
     allow(controller).to receive(:authorize_instructor!).and_return(true)
   end
 
+  describe 'POST create' do
+    it 'creates a menu' do
+      course = create(:course)
+
+      expect {
+        post :create, course_id: course.id, menu: attributes_for(:menu)
+      }.to change(Courses::Menu, :count).by(1)
+
+    end
+  end
+
   describe 'PUT update' do
-    it 'updates menu' do
+    it 'updates the menu' do
       menu = create(:menu, name: 'Week 1')
       course = menu.course
 
