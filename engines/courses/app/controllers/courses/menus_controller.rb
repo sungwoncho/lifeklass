@@ -45,7 +45,7 @@ module Courses
     end
 
     def menu_params
-      params.require(:menu).permit(:name)
+      params.require(:menu).permit(:name, :position)
     end
 
   end

@@ -8,6 +8,7 @@ RSpec.describe Courses::Menu, type: :model do
 
   describe 'validation' do
     it { should validate_uniqueness_of(:name).scoped_to(:course_id) }
+    it { should validate_numericality_of(:position).only_integer }
   end
 
   it 'has a valid factory' do

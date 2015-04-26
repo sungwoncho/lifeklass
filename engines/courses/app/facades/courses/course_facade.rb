@@ -10,7 +10,7 @@ module Courses
     end
 
     def menus
-      Courses::Menu.by_course_id(@course)
+      Courses::Menu.by_course_id(@course).by_position
     end
 
     def current_menu
