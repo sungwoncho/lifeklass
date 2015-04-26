@@ -1,2 +1,2 @@
-.list-group-item{ class: "#{'active' if @course.current_menu == menu}" }
+%li{ class: "#{'active' if @course.current_menu == menu}" }
   = link_to menu.name, course_menu_path(menu.course, menu)

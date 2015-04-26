@@ -12,10 +12,7 @@
 
     .row
       .col-md-3
-        .list-group-item= link_to 'Main', courses_app.course_path(@course.id)
-        = render @course.menus
-
-        = link_to 'Customize', courses_app.menu_course_menus_path(@course.id) if policy(@course.course).update?
+        = render partial: 'globals/menu', locals: { course: @course }
       .col-md-9
         = yield
 
