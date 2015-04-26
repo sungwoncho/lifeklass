@@ -95,7 +95,8 @@ Courses::Course.all.each do |course|
   6.times do |n|
     Courses::Menu.create!(
       name: "menu_#{n}",
-      course_id: course.id
+      course_id: course.id,
+      position: n
     )
   end
 end
