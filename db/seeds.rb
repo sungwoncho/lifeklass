@@ -10,10 +10,10 @@ require "faker"
 include ActionView::Helpers::TextHelper
 
 Users::User.destroy_all
-Mentors::Mentor.destroy_all
 Mentors::Organization.destroy_all
 Mentors::MentorOrganization.destroy_all
 Mentors::Mentorship.destroy_all
+Mentors::Mentor.destroy_all
 Courses::Course.destroy_all
 Courses::Category.destroy_all
 Courses::CourseCategory.destroy_all
@@ -73,6 +73,11 @@ Courses::Course.all.each do |course|
 end
 
 puts "Created #{pluralize Courses::Course.count, 'course'}."
+
+Mentors::Mentorship.create(mentor: Mentors::Mentor.first, course: Courses::Course.first)
+Courses::Course.first.update!(owner: Mentors::Mentor.first)
+
+puts "Set the first user as the mentor of the first course."
 
 15.times do |n|
   Courses::Category.create!(
