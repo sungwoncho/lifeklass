@@ -9,7 +9,6 @@ Gem::Specification.new do |s|
   s.version     = Users::VERSION
   s.authors     = ["Sung Won Cho"]
   s.email       = ["mikeswcho@gmail.com"]
-  s.homepage    = "TODO"
   s.summary     = "Users"
   s.description = "Users, Devise, etc."
   s.license     = "MIT"
