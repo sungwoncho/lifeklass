@@ -10,9 +10,10 @@ RSpec.describe Users::UsersController, type: :controller do
   end
 
   describe 'GET show' do
-    it 'decorates and assigns the requested user to @user' do
+    it 'assigns a user_facade to @user' do
       get :show, id: user
-      expect(assigns(:user).object).to eq user
+      expect(assigns(:user)).to be_a(Users::UserFacade)
+      expect(assigns(:user).user).to eq user
     end
   end
 end
