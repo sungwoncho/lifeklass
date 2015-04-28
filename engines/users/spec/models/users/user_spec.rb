@@ -46,4 +46,23 @@ RSpec.describe Users::User, type: :model do
       end
     end
   end
+
+  describe '#mentor_id' do
+    it 'is delegated to mentor' do
+      user = Users::User.new
+      mentor = Mentors::Mentor.new
+
+      allow(mentor).to receive(:id).and_return(1)
+      allow(user).to receive(:mentor).and_return(mentor)
+      expect(user.mentor_id).to eq 1
+    end
+
+    context 'when user is not a mentor' do
+      it 'returns nil' do
+        user = Users::User.new
+
+        expect(user.mentor_id).to eq nil
+      end
+    end
+  end
 end

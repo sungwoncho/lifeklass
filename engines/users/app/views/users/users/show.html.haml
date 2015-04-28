@@ -1,8 +1,14 @@
 .container
   .row
     .col-md-12
-      %h1= @user_facade.user_page_heading(self)
+      %h1= @user.profile_heading(self)
 
   .row
     .col-md-12
-      = @user_facade.enrolled_course_list(self)
+      %h3 Courses enrolled
+      = @user.enrolled_course_list(self)
+
+  .row
+    .col-md-12
+      %h3 Courses mentoring
+      = render partial: 'users/users/dashboard/course', collection: @user.mentoring_courses

@@ -11,7 +11,7 @@ module Users
 
     def enrolled_course_list
       if enrolled_courses.present?
-        h.render(partial: 'users/users/dashboard/enrolled_course', collection: enrolled_courses)
+        h.render(partial: 'users/users/dashboard/course', collection: enrolled_courses)
       else
         h.render(partial: 'users/users/dashboard/no_enrollment')
       end

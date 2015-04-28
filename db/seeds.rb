@@ -74,7 +74,9 @@ end
 
 puts "Created #{pluralize Courses::Course.count, 'course'}."
 
-Mentors::Mentorship.create(mentor: Mentors::Mentor.first, course: Courses::Course.first)
+first_user = Users::User.first
+first_mentor = Mentors::Mentor.find_by(user_id: first_user.id)
+Mentors::Mentorship.create(mentor: first_mentor, course: Courses::Course.first)
 Courses::Course.first.update!(owner: Mentors::Mentor.first)
 
 puts "Set the first user as the mentor of the first course."

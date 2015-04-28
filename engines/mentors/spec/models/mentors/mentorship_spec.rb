@@ -22,4 +22,15 @@ RSpec.describe Mentors::Mentorship, type: :model do
       expect(result).to match_array [jim, lily]
     end
   end
+
+  describe '.get_courses_by_mentor_id' do
+    it 'returns all the courses that the mentor is mentoring' do
+      mma = create(:course)
+      jim = create(:mentor)
+      create(:mentorship, mentor: jim, course: mma)
+
+      result = Mentors::Mentorship.get_courses_by_mentor_id(jim)
+      expect(result).to match_array [mma]
+    end
+  end
 end

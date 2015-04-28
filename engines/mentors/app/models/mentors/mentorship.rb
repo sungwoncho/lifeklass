@@ -14,5 +14,14 @@ module Mentors
       mentor_ids = get_mentor_ids_by_course_id(course_id)
       Mentors::Mentor.where(id: mentor_ids)
     end
+
+    def self.get_course_ids_by_mentor_id(mentor_id)
+      by_mentor_id(mentor_id).pluck(:course_id)
+    end
+
+    def self.get_courses_by_mentor_id(mentor_id)
+      course_ids = get_course_ids_by_mentor_id(mentor_id)
+      Courses::Course.where(id: course_ids)
+    end
   end
 end
