@@ -9,16 +9,12 @@ module Users
       name_components.last.humanize
     end
 
-    def enrolled_course_list
-      if enrolled_courses.present?
-        h.render(partial: 'users/users/dashboard/course', collection: enrolled_courses)
-      else
-        h.render(partial: 'users/users/dashboard/no_enrollment')
+    def mentor_badge
+      if model.is_a_mentor?
+        h.content_tag :div, class: 'label label-success' do
+          "Mentor"
+        end
       end
-    end
-
-    def user_page_heading
-      h.current_user.id == model.id ? 'Dashboard' : "#{model.name}'s profile"
     end
 
     private

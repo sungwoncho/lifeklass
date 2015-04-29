@@ -1,8 +1,14 @@
 module Users
   class UsersController < ApplicationController
 
+    before_action :authenticate_user!, only: :dashboard
+
     def show
       @user = UserFacade.new(user, self)
+    end
+
+    def dashboard
+      @user = UserFacade.new(current_user)
     end
 
     private

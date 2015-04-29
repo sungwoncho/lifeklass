@@ -9,4 +9,15 @@ RSpec.describe Courses::Enrollment, type: :model do
   it 'has a valid factory' do
     expect(build(:enrollment)).to be_valid
   end
+
+  describe '.get_courses_by_user_id' do
+    it 'returns courses that user is enrolled in' do
+      mma = create(:course)
+      jim = create(:user)
+      create(:enrollment, user: jim, course: mma)
+
+      result = Courses::Enrollment.get_courses_by_user_id(jim)
+      expect(result).to match_array [mma]
+    end
+  end
 end

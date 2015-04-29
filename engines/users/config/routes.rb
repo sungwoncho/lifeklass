@@ -5,4 +5,5 @@ Users::Engine.routes.draw do
                                     passwords:     "devise/passwords"}
 
   resources :users
+  get 'dashboard' => 'users#dashboard'
 end

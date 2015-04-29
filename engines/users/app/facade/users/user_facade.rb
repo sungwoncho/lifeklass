@@ -9,20 +9,12 @@ module Users
       @controller = controller
     end
 
-    def enrolled_course_list(view_context)
-      return unless view_context.current_user.id == @user.id
-
-      UserPresenter.new(@user, view_context).enrolled_course_list
+    def enrolled_courses
+      Courses::Enrollment.get_courses_by_user_id(@user.id)
     end
 
     def mentoring_courses
-      return unless user.is_a_mentor?
-
       Mentors::Mentorship.get_courses_by_mentor_id(user.mentor_id)
-    end
-
-    def profile_heading(view_context)
-      UserPresenter.new(@user, view_context).user_page_heading
     end
 
     private
