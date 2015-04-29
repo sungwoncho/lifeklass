@@ -8,7 +8,15 @@
       %h3 Courses enrolled
       = @user.enrolled_course_list(self)
 
-  .row
-    .col-md-12
-      %h3 Courses mentoring
-      = render partial: 'users/users/dashboard/course', collection: @user.mentoring_courses
+  - if @user.is_a_mentor?
+    .row
+      .col-md-12
+        %h3 Courses mentoring
+        = render partial: 'users/users/dashboard/course', collection: @user.mentoring_courses
+
+  - unless @user.is_a_mentor?
+    .row
+      .col-md-12
+        %h3 Become a mentor
+        Share your knowledge with the community.
+        = link_to 'Get started', mentors_app.new_mentor_path
