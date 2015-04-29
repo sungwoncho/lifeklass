@@ -23,7 +23,9 @@ module Courses
     end
 
     def create
-      @course = Course.new(course_params)
+      course = Courses::CreateCourseService.call(current_mentor, course_params)
+
+      redirect_to course
     end
 
     def update
@@ -45,7 +47,7 @@ module Courses
       end
 
       def course_params
-        params[:course]
+        params[:course].permit(:title, :description)
       end
 
       def layout

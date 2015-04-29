@@ -25,6 +25,10 @@ module Users
       "Have mentored in #{ h.pluralize user.mentoring_courses.count, 'course' }" if user.mentoring_courses.present?
     end
 
+    def new_course_button
+      h.link_to 'New course', h.courses_app.new_course_path, class: 'btn btn-default'
+    end
+
     private
 
     def name_components
