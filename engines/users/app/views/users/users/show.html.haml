@@ -1,9 +1,9 @@
-.container
-  .row
-    .col-md-12
-      %h1= @user.name
+- present(@user, Users::UserPresenter) do |user|
 
-      -# = @user.mentor_badge
+  .container
+    .row
+      .col-md-12
+        %h1= user.name
 
-  .row
-    .col-md-12
+        .badges
+          = user.mentor_badge

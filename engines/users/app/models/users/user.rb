@@ -19,5 +19,13 @@ module Users
     def enrolled_in?(course_id)
       Courses::Enrollment.find_by(user_id: self.id, course_id: course_id).present?
     end
+
+    def enrolled_courses
+      Courses::Enrollment.get_courses_by_user_id(self.id)
+    end
+
+    def mentoring_courses
+      Mentors::Mentorship.get_courses_by_mentor_id(self.mentor_id)
+    end
   end
 end

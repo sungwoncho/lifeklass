@@ -9,14 +9,6 @@ module Users
       @controller = controller
     end
 
-    def enrolled_courses
-      Courses::Enrollment.get_courses_by_user_id(@user.id)
-    end
-
-    def mentoring_courses
-      Mentors::Mentorship.get_courses_by_mentor_id(user.mentor_id)
-    end
-
     private
 
     def method_missing(method, *args)

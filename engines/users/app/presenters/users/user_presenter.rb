@@ -10,11 +10,7 @@ module Users
     end
 
     def mentor_badge
-      if model.is_a_mentor?
-        h.content_tag :div, class: 'label label-success' do
-          "Mentor"
-        end
-      end
+      h.render 'users/users/dashboard/mentor_badge' if model.is_a_mentor?
     end
 
     private
