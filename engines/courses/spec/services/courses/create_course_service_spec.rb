@@ -32,5 +32,13 @@ RSpec.describe Courses::CreateCourseService, type: :service do
 
       expect(result).to eq Courses::Course.last
     end
+
+    it 'sets ownership' do
+      create_course_service.call(mentor, course_params)
+      course = Courses::Course.last
+
+      expect(course.owner).to eq mentor
+
+    end
   end
 end
