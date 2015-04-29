@@ -7,3 +7,14 @@
 
         .badges
           = user.mentor_badge
+
+        .info
+          %ul.list-unstyled
+            %li= "Joined on #{ user.joined_date }"
+            %li= user.enrollment_count
+            %li= user.mentorship_count
+
+    .row
+      .col-md-12
+        %h3 Courses enrolled
+        = render partial: 'users/users/enrolled_course', collection: user.enrolled_courses
