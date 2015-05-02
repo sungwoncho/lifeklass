@@ -2,6 +2,8 @@ module Courses
   class CoursePresenter < ApplicationPresenter
 
     def enroll_action_for(user)
+      return if user.is_a_mentor? && user.mentor.is_mentor_of?(model)
+
       if user.enrolled_in?(model)
         h.render partial: 'courses/enrollments/drop_button', locals: { course: model }
       else

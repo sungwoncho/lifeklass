@@ -22,5 +22,9 @@ module Mentors
     def is_owner_of_course?(course)
       course.owner == self
     end
+
+    def mentoring_courses
+      Mentors::Mentorship.get_courses_by_mentor_id(self.mentor_id)
+    end
   end
 end
