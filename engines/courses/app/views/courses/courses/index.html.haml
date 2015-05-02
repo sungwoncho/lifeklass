@@ -5,9 +5,9 @@
 
   .row
     .col-md-3
-      -# = render 'search_form', courses_facade: @courses_facade
+      = render 'search_form', courses_facade: @courses_facade
     .col-md-9
-      -# = render 'count', courses_facade: @courses_facade
+      = render 'count', courses_facade: @courses_facade
       .result
         = render(@courses_facade.courses) || render("no_match")
         = will_paginate @courses_facade.courses, renderer: ::BootstrapPagination::Rails
