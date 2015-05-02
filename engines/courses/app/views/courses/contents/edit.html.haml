@@ -1,8 +1,8 @@
-= simple_form_for [@course.course, @course.current_menu, @course.current_content] do |f|
+= simple_form_for [current_course, current_menu, @content] do |f|
   = f.input :title
   = f.input :body, as: :ckeditor, input_html: { ckeditor: { toolbar: 'mini' } }
 
   = f.button :submit
 
 %h3 Danger zone
-= link_to 'Delete', course_menu_content_path(@course.course, @course.current_menu, @course.current_content), method: :delete, class: 'btn btn-danger btn-sm', data: { confirm: 'Are you sure?' }
+= link_to 'Delete', course_menu_content_path(current_course, current_menu, @content), method: :delete, class: 'btn btn-danger btn-sm', data: { confirm: 'Are you sure?' }

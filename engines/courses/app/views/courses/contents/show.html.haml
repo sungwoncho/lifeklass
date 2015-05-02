@@ -1,5 +1,5 @@
-%h1= @course.current_content.title
+%h1= @content.title
 
-= @course.current_content.body.html_safe
+= @content.body.html_safe
 
-= link_to 'Edit content', courses_app.edit_course_menu_content_path(@course.id, @course.current_menu.id, @course.current_content.id)
+= link_to 'Edit content', courses_app.edit_course_menu_content_path(current_course, current_menu, @content)
