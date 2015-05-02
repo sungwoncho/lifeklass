@@ -1,4 +1,4 @@
--# = render(current_menu_contents) || render('no_content')
--# .pagination= will_paginate @course.current_menu_contents, renderer: ::BootstrapPagination::Rails
--#
--# = link_to 'New content', courses_app.new_course_menu_content_path(@course.id, @course.current_menu.id)
+= render(@contents) || render('no_content')
+.pagination= will_paginate @contents, renderer: ::BootstrapPagination::Rails
+
+= link_to 'New content', courses_app.new_course_menu_content_path(current_course, current_menu)

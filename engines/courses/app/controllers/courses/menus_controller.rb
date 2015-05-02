@@ -3,12 +3,13 @@ module Courses
 
     before_action :authorize_access!, only: [:index, :show]
     before_action :authorize_instructor!, except: [:index, :show]
-    before_action :set_course, only: [:index, :show, :edit]
+    before_action :set_menu, only: [:index, :edit]
 
     def index
     end
 
     def show
+      @contents = Courses::Content.where(menu_id: params[:id]).paginate(page: params[:page], per_page: 10)
     end
 
     def edit
@@ -37,12 +38,8 @@ module Courses
 
     private
 
-    def course
-      Courses::Course.find(params[:course_id])
-    end
-
-    def set_course
-      @course = Courses::CourseFacade.new(course, self)
+    def set_menu
+      @menu = Courses::Menu.find(params[:id])
     end
 
     def menu_params
