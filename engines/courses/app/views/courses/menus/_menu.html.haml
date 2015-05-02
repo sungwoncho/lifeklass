@@ -1,2 +1,2 @@
 %li{ class: "#{'active' if current_menu == menu}" }
-  = link_to menu.name, course_menu_path(menu.course, menu)
+  = link_to menu.name, course_menu_path(current_course, menu)

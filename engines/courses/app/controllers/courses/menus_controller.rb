@@ -3,9 +3,10 @@ module Courses
 
     before_action :authorize_access!, only: [:index, :show]
     before_action :authorize_instructor!, except: [:index, :show]
-    before_action :set_menu, only: [:index, :edit]
+    # before_action :set_menu, only: [:edit]
 
     def index
+      @menus = Courses::Menu.where(course_id: current_course)
     end
 
     def show
