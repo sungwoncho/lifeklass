@@ -56,13 +56,16 @@ RSpec.describe Users::User, type: :model do
       expect(mentor).to receive(:mentoring_courses)
       user.mentoring_courses
     end
+  end
 
-    context 'when user is not a mentor' do
-      it 'returns nil' do
-        user = Users::User.new
+  describe '#is_mentor_of?' do
+    it 'is delegated to mentor' do
+      user = Users::User.new
+      mentor = Mentors::Mentor.new
+      allow(user).to receive(:mentor).and_return(mentor)
 
-        expect(user.mentoring_courses).to eq nil
-      end
+      expect(mentor).to receive(:is_mentor_of?)
+      user.is_mentor_of?(double(Courses::Course))
     end
   end
 end

@@ -24,7 +24,7 @@ module Mentors
     end
 
     def mentoring_courses
-      Mentors::Mentorship.get_courses_by_mentor_id(self.mentor_id)
+      Mentors::Mentorship.get_courses_by_mentor_id(self.id)
     end
   end
 end

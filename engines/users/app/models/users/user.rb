@@ -10,7 +10,8 @@ module Users
     has_many :enrollments, class_name: "Courses::Enrollment"
     has_many :courses, through: :enrollments, class_name: "Courses::Course"
 
-    delegate :mentoring_courses, to: :mentor, allow_nil: true
+    delegate :mentoring_courses, to: :mentor
+    delegate :is_mentor_of?    , to: :mentor
 
     def is_a_mentor?
       Mentors::Mentor.find_by(user_id: self.id).present?
@@ -22,6 +23,10 @@ module Users
 
     def enrolled_courses
       Courses::Enrollment.get_courses_by_user_id(self.id)
+    end
+
+    def mentor
+      Mentors::Mentor.find_by(user_id: self.id) || Mentors::NullMentor.new
     end
   end
 end
