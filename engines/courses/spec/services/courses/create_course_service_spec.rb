@@ -3,7 +3,7 @@ require File.expand_path('engines/courses/spec/spec_helper')
 RSpec.describe Courses::CreateCourseService, type: :service do
   let(:create_course_service) { described_class }
   let(:mentor) { create(:mentor) }
-  let(:course_params) { { title: 'MMA', description: 'Punch stuff' } }
+  let(:course_params) { { title: 'MMA', description: 'Punch stuff', category_ids: [1, 2, 3] } }
 
   describe '.call' do
     it 'creates a course' do
@@ -38,7 +38,15 @@ RSpec.describe Courses::CreateCourseService, type: :service do
       course = Courses::Course.last
 
       expect(course.owner).to eq mentor
+    end
 
+    it 'assigns categories' do
+      fitness = create(:category, name: 'Fitness')
+      fighting = create(:category, name: 'Fighting')
+      martial_arts = create(:category, name: 'Martial arts')
+
+      create_course_service.call(mentor, course_params)
+      expect(Courses::CourseCategory.all.each_entry.map(&:category_id)).to match_array [fitness.id, fighting.id, martial_arts.id]
     end
   end
 end
