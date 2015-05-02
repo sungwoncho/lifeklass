@@ -3,8 +3,8 @@ module Courses
     def current_menu
       if controller_name == 'menus'
         Courses::Menu.find(params[:id])
-      else
-        Courses::menu.find(params[:menu_id])
+      elsif controller_name == 'contents'
+        Courses::Menu.find(params[:menu_id])
       end
     end
 
