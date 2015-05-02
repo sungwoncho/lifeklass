@@ -77,7 +77,7 @@ RSpec.describe Mentors::Mentor, type: :model do
     end
   end
 
-  describe '#is_instructor_of?' do
+  describe '#is_mentor_of?' do
     let(:course) { Courses::Course.new }
     let(:mentor) { Mentors::Mentor.new }
 
@@ -85,14 +85,14 @@ RSpec.describe Mentors::Mentor, type: :model do
       it 'returns true' do
         create(:mentorship, mentor: mentor, course: course)
 
-        result = mentor.is_instructor_of?(course)
+        result = mentor.is_mentor_of?(course)
         expect(result).to eq true
       end
     end
 
     context 'if the mentor is not an instructor of the course' do
       it 'returns false' do
-        result = mentor.is_instructor_of?(course)
+        result = mentor.is_mentor_of?(course)
         expect(result).to eq false
       end
     end

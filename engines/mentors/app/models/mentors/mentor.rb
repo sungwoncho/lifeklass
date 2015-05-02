@@ -11,7 +11,7 @@ module Mentors
 
     scope :by_course_id, -> course_id { joins(:courses).where("courses.id = ?", course_id) }
 
-    def is_instructor_of?(course)
+    def is_mentor_of?(course)
       Mentors::Mentorship.get_mentors_by_course_id(course.id).include?(self)
     end
 

@@ -8,11 +8,11 @@ module Courses
     end
 
     def access?
-      user.enrolled_in?(course) || mentor.is_instructor_of?(course)
+      user.enrolled_in?(course) || mentor.is_mentor_of?(course)
     end
 
     def update?
-      mentor.is_instructor_of?(course)
+      mentor.is_mentor_of?(course)
     end
 
     private

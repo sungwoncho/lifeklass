@@ -8,7 +8,7 @@ module Courses
     end
 
     def edit
-      mentor && mentor.is_instructor_of?(course)
+      mentor && mentor.is_mentor_of?(course)
     end
 
     private
