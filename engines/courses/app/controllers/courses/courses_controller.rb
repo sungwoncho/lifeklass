@@ -3,7 +3,7 @@ module Courses
     layout :layout
 
     skip_before_action :authenticate_user!, only: :index
-    before_action :authenticate_mentor!, only: [:new, :edit, :create, :update, :destroy]
+    before_action :authenticate_mentor!, except: [:index, :show]
     before_action :set_course, only: [:show, :edit, :update, :destroy]
 
     def index
@@ -11,7 +11,6 @@ module Courses
     end
 
     def show
-      @course = CourseFacade.new(course, self)
     end
 
     def new
@@ -38,20 +37,17 @@ module Courses
     end
 
     private
-      def set_course
-        @course = CoursePresenter.new(course, view_context)
-      end
 
-      def course
-        Course.find(params[:id])
-      end
+    def set_course
+      @course = Course.find(params[:id])
+    end
 
-      def course_params
-        params[:course].permit(:title, :description)
-      end
+    def course_params
+      params[:course].permit(:title, :description)
+    end
 
-      def layout
-        action_name == 'show' ? 'course' : 'application'
-      end
+    def layout
+      action_name == 'show' ? 'course' : 'application'
+    end
   end
 end
