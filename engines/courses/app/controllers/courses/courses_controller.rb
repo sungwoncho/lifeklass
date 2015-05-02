@@ -15,6 +15,7 @@ module Courses
 
     def new
       @course = Course.new
+      @categories = Category.all
     end
 
     def edit
@@ -43,7 +44,7 @@ module Courses
     end
 
     def course_params
-      params[:course].permit(:title, :description)
+      params[:course].permit(:title, :description, category_ids: [])
     end
 
     def layout

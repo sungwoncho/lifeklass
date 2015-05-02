@@ -7,4 +7,6 @@
         = f.input :title
         = f.input :description
 
+        = f.collection_check_boxes :category_ids, @categories, :id, :name, include_hidden: false
+
         = f.submit class: 'btn btn-default'
