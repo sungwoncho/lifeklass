@@ -13,10 +13,6 @@ module Courses
       Courses::Menu.by_course_id(@course).by_position
     end
 
-    def current_menu
-      Courses::Menu.find(menu_params) if menu_params
-    end
-
     def mentors
       Mentors::Mentorship.get_mentors_by_course_id(@course.id)
     end
@@ -41,15 +37,5 @@ module Courses
     def method_missing(method, *args)
       args.empty? ? course.send(method) : course.send(method, *args)
     end
-
-    def menu_params
-      case c.controller_name
-      when 'menus'
-        c.params[:id]
-      when 'contents'
-        c.params[:menu_id]
-      end
-    end
-
   end
 end

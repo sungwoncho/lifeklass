@@ -18,11 +18,6 @@ module Courses
       CoursesPresenter.new(courses).count
     end
 
-    def paginate(view_context)
-      return unless courses
-      CoursesPresenter.new(courses, view_context).paginate
-    end
-
     def categories
       Category.all
     end
