@@ -1,6 +1,8 @@
-%ul.nav.nav-pills.nav-stacked
-  %li= link_to 'Main', courses_app.course_path(current_course)
-  %hr
-  = render current_course.menus
-  %hr
-  %li= link_to 'Customize menus', courses_app.menu_course_menus_path(current_course) if policy(current_course).update?
+- present(current_course, Courses::CoursePresenter) do |course|
+
+  %ul.nav.nav-pills.nav-stacked
+    %li= link_to 'Main', courses_app.course_path(course)
+    %hr
+    = render course.menus
+    %hr
+    %li= link_to 'Customize menus', courses_app.menu_course_menus_path(course) if policy(current_course).update?

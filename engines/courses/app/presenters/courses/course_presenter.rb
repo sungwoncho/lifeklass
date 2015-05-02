@@ -15,5 +15,9 @@ module Courses
       end
     end
 
+    def menus
+      Courses::Menu.by_course_id(model).by_position
+    end
+
   end
 end

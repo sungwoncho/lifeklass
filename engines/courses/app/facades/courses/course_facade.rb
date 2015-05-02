@@ -9,14 +9,6 @@ module Courses
       @controller = controller
     end
 
-    def menus
-      Courses::Menu.by_course_id(@course).by_position
-    end
-
-    def mentors
-      Mentors::Mentorship.get_mentors_by_course_id(@course.id)
-    end
-
     def current_menu_contents
       return unless current_menu
       Courses::Content.by_menu_id(current_menu.id).by_course_id(@course).paginate(page: c.params[:page], per_page: 10)
