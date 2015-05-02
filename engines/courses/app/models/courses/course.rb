@@ -8,6 +8,7 @@ module Courses
     has_many :course_categories
     has_many :categories, through: :course_categories
     has_many :contents
+    has_many :menus
 
     scope :by_title,      -> (title) { where("title ILIKE ?", "%#{title}%") if title }
     scope :by_category,   -> (categories) {
@@ -25,7 +26,7 @@ module Courses
       find(course_id).owner
     end
 
-    def instructors
+    def mentors
       Mentors::Mentorship.get_mentors_by_course_id(self.id)
     end
   end

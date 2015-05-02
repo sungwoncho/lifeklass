@@ -1,4 +1,4 @@
 module Courses
-  module MenusHelper
+  module CoursesHelper
   end
 end

@@ -3,16 +3,16 @@
 
     .row
       .col-md-12.course-head
-        %h1= link_to @course.title, courses_app.course_path(@course.id), class: 'course-title'
+        %h1= link_to current_course.title, courses_app.course_path(current_course), class: 'course-title'
 
         By
-        - @course.mentors.each do |mentor|
+        - current_course.mentors.each do |mentor|
           %span.mentor-link
           = link_to mentor.name, mentors_app.mentor_path(mentor)
 
     .row
       .col-md-3
-        = render partial: 'globals/menu', locals: { course: @course }
+        = render partial: 'globals/menu', locals: { course: current_course }
       .col-md-9
         = yield
 

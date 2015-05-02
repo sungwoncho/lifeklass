@@ -7,6 +7,7 @@ RSpec.describe Courses::Course, type: :model do
     it { should have_many(:course_categories) }
     it { should have_many(:categories).through(:course_categories) }
     it { should have_many(:contents) }
+    it { should have_many(:menus) }
   end
 
   it 'has a valid factory' do
@@ -33,13 +34,13 @@ RSpec.describe Courses::Course, type: :model do
     end
   end
 
-  describe '#instructors' do
+  describe '#mentors' do
     it 'asks Mentors::Mentorship to get all mentors for the course' do
       course = Courses::Course.new
       allow(course).to receive(:id).and_return(1)
 
       expect(Mentors::Mentorship).to receive(:get_mentors_by_course_id).with(1)
-      course.instructors
+      course.mentors
     end
   end
 end

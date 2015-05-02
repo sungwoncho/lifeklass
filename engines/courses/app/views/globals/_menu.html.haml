@@ -1,6 +1,6 @@
 %ul.nav.nav-pills.nav-stacked
-  %li= link_to 'Main', courses_app.course_path(course.id)
+  %li= link_to 'Main', courses_app.course_path(current_course)
   %hr
-  = render course.menus
+  = render current_course.menus
   %hr
-  %li= link_to 'Customize menus', courses_app.menu_course_menus_path(course.id) if policy(course.course).update?
+  %li= link_to 'Customize menus', courses_app.menu_course_menus_path(current_course) if policy(current_course).update?
