@@ -1,2 +1,7 @@
-.content
-  = link_to content.title, course_app.course_menu_content_path(current_course, current_menu, content)
+= div_for content, class: 'row' do
+
+  - present(content) do |content_presenter|
+    .col-md-8
+      %h4= link_to content.title, course_app.course_menu_content_path(current_course, current_menu, content)
+    .col-md-4
+      = content_presenter.posted_on

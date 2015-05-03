@@ -9,7 +9,7 @@ module Courses
     end
 
     def show
-      @contents = Courses::Content.where(menu_id: params[:id]).paginate(page: params[:page], per_page: 10)
+      @contents = Courses::Content.where(menu_id: params[:id]).paginate(page: params[:page], per_page: 15)
     end
 
     def edit
