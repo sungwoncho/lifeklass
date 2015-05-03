@@ -1,3 +1,60 @@
 // Place all the styles related to the static_pages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+#static_pages {
+
+    hr {
+        max-width: 50px;
+        border-color: #f05f40;
+        border-width: 3px;
+    }
+
+    header {
+        width: 100%;
+        min-height: auto;
+        text-align: center;
+        color: #FFF;
+        background-image: image-url('header.jpg');
+        background-position: center;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        background-size: cover;
+        -o-background-size: cover;
+
+        .header-content {
+            position: relative;
+            width: 100%;
+            padding: 252px 15px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 5em;
+            margin-top: 0;
+            margin-bottom: 0;
+            text-transform: uppercase;
+            font-weight: 700;
+            color: #FFF;
+        }
+
+        p {
+            font-size: 2em;
+        }
+    }
+
+    @media screen and (max-width: 768px) {
+        header {
+            .header-content {
+                padding: 85px 15px;
+            }
+
+            h1 {
+                font-size: 4em;
+            }
+
+            p {
+                font-size: 1.5em;
+            }
+        }
+    }
+}
