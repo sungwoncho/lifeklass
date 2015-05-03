@@ -60,6 +60,10 @@
 
     section {
         padding: 50px 0;
+
+        .fa {
+            color: #594946;
+        }
     }
 
     p {
@@ -67,7 +71,7 @@
         line-height: 1.5;
     }
 
-    .fa {
-        color: #594946;
+    .bg-lightblue {
+        background-color: #EFE4FF;
     }
 }
