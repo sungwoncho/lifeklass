@@ -5,5 +5,5 @@ Rails.application.routes.draw do
 
   mount Courses::Engine, at: '/', as: :course_app
   mount Mentors::Engine, at: '/', as: :mentors_app
-  mount Users::Engine, at: '/', as: :users_app
+  mount Users::Engine, at: '/', as: :user_app
 end
