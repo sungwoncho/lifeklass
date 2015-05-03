@@ -1,6 +1,6 @@
 require File.expand_path('engines/courses/spec/spec_helper')
 
-RSpec.describe Courses::Category do
+RSpec.describe Courses::Category, type: :model do
   describe 'validations' do
     it { should validate_presence_of(:name) }
   end

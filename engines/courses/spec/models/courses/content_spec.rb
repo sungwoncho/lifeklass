@@ -4,6 +4,7 @@ RSpec.describe Courses::Content, type: :model do
   describe 'association' do
     it { should belong_to(:course) }
     it { should belong_to(:menu) }
+    it { should have_many(:comments) }
   end
 
   it 'has a valid factory' do
