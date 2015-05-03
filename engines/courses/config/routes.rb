@@ -7,7 +7,9 @@ Courses::Engine.routes.draw do
 
     resources :menus, path: '', except: :index do
       get 'menu' => 'menus#index', on: :collection
-      resources :contents, except: :index
+      resources :contents, except: :index do
+        resources :comments, only: [:create, :update, :destroy]
+      end
     end
   end
 

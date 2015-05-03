@@ -6,6 +6,7 @@ module Courses
     before_action :set_content, only: [:show, :edit, :update, :destroy]
 
     def show
+      @comments = Courses::Comment.where(content_id: @content)
     end
 
     def new

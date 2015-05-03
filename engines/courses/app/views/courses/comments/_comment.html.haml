@@ -1,0 +1,6 @@
+- present comment do |comment_presenter|
+  = div_for comment_presenter, class: 'row' do
+    .col-md-3
+      = link_to comment_presenter.owner_name, user_app.user_path(comment.owner)
+    .col-md-9
+      .comment-body= comment.body
