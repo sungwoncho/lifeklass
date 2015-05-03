@@ -14,7 +14,7 @@ module Mentors
       @mentor = current_user.build_mentor
 
       if @mentor.save!
-        redirect_to mentors_app.mentor_path(@mentor)
+        redirect_to mentor_app.mentor_path(@mentor)
       end
     end
 
