@@ -4,3 +4,35 @@
     %hr
     %p Crowd-sourced lifestyle academy
     = link_to 'Find out more', main_app.about_path, class: 'btn btn-lg btn-danger'
+
+%section.features
+  .container
+    .row
+      .col-md-12
+        %h2.text-center How we do
+        %hr
+
+    .row
+      .col-lg-3.col-md-6.text-center
+        = icon('cubes', class: 'fa-4x')
+        %h3 Crowed sourced
+        %p.text-muted
+          Knowledge shared by anyone
+
+      .col-lg-3.col-md-6.text-center
+        = icon('globe', class: 'fa-4x')
+        %h3 Open to all
+        %p.text-muted
+          Knowledge available to anyone, anywhere
+
+      .col-lg-3.col-md-6.text-center
+        = icon('flag', class: 'fa-4x')
+        %h3 One destination
+        %p.text-muted
+          A single destination for self-improvement
+
+      .col-lg-3.col-md-6.text-center
+        = icon('star', class: 'fa-4x')
+        %h3 Peer reviewed
+        %p.text-muted
+          Reviews to help you discover good materials
