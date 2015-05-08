@@ -1,4 +1,7 @@
 = simple_form_for comment, url: course_app.course_menu_content_comments_path(current_course.id, current_menu.id, current_content.id) do |f|
-  = f.hidden_field :parent_id
-  = f.input :body
-  = f.submit
+  .row.mb.10
+    = f.hidden_field :parent_id
+    .col-md-10
+      = f.input :body, label: false
+    .col-md-2
+      = f.submit 'Comment', class: 'btn btn-default'

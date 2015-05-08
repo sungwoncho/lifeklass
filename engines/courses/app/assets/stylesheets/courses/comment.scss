@@ -1,0 +1,23 @@
+#contents, #comments {
+    .reply {
+        margin-left: 50px;
+    }
+
+    .reply .reply .reply .reply {
+        margin-left: 0;
+    }
+
+    .comment {
+        padding: 15px;
+        margin-bottom: 10px;
+        background-color: #fff;
+    }
+
+    .comment-body {
+        word-wrap: break-word;
+    }
+
+    .reply-form {
+        display: none;
+    }
+}

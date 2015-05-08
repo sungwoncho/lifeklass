@@ -17,4 +17,6 @@
 //= require bootstrap.min
 //= require ckeditor/init
 
+//= require courses/application
+
 //= require_tree .

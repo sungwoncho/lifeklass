@@ -1,8 +1,14 @@
 - present comment do |comment_presenter|
-  = div_for comment_presenter, class: 'row' do
-    .col-md-3
-      = link_to comment_presenter.owner_name, user_app.user_path(comment.owner)
-    .col-md-9
-      .comment-body= comment.body
-      .action
-        = link_to 'Reply', course_app.new_course_menu_content_comment_path(current_course, current_menu, current_content, parent_id: comment.id), remote: true
+  = div_for comment do
+    .row
+      .col-md-3
+        %div= link_to comment_presenter.owner_name, user_app.user_path(comment.owner)
+        %div= comment_presenter.posted_ago
+      .col-md-7
+        .comment-body= simple_format(comment.body)
+      .col-md-2
+        .action.pull-right
+          = link_to 'Reply', '#', class: 'reply-btn', data: { parent_id: comment.id }
+
+    .reply-form.mt20
+      = render 'courses/comments/form', comment: Courses::Comment.new(parent_id: comment.id)

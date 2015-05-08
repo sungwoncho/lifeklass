@@ -1,11 +1,6 @@
 module Courses
   class CommentsController < ApplicationController
 
-    def new
-      @comment = Courses::Comment.new
-      @comment.parent_id = params[:parent_id]
-    end
-
     def create
       @comment = Courses::Comment.new(comment_params.merge(content_id: current_content.id, owner: current_user))
 
