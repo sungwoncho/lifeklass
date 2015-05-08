@@ -1,7 +1,7 @@
 module Courses
   class ApplicationController < ::ApplicationController
     layout 'course'
-    helper_method :current_course, :current_menu
+    helper_method :current_course, :current_menu, :current_content
 
     def current_course
       if controller_name == 'courses'
@@ -14,7 +14,7 @@ module Courses
     def current_menu
       if controller_name == 'menus'
         Courses::Menu.find(params[:id])
-      elsif controller_name == 'contents'
+      elsif controller_name == 'contents' || 'comments'
         Courses::Menu.find(params[:menu_id])
       end
     end

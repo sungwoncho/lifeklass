@@ -8,9 +8,9 @@
   .action.mt30
     = link_to 'Edit content', course_app.edit_course_menu_content_path(current_course, current_menu, @content)
 
-  = render(@comments)
+  = nested_comments(@comments)
 
   %h3 Comment
-  = simple_form_for :comment, url: course_menu_content_comments_path(current_course, current_menu, @content) do |f|
+  = simple_form_for :comment, url: course_app.course_menu_content_comments_path(current_course, current_menu, @content) do |f|
     = f.input :body, as: :text, label: false, input_html: { rows: 5 }
     = f.submit class: 'btn btn-default'

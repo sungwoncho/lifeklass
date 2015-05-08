@@ -4,3 +4,5 @@
       = link_to comment_presenter.owner_name, user_app.user_path(comment.owner)
     .col-md-9
       .comment-body= comment.body
+      .action
+        = link_to 'Reply', course_app.new_course_menu_content_comment_path(current_course, current_menu, current_content, parent_id: comment.id), remote: true
