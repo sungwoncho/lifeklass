@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150503100514) do
+ActiveRecord::Schema.define(version: 20150509023738) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -51,6 +51,7 @@ ActiveRecord::Schema.define(version: 20150503100514) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string   "ancestry"
+    t.string   "state"
   end
 
   add_index "courses_comments", ["ancestry"], name: "index_courses_comments_on_ancestry", using: :btree

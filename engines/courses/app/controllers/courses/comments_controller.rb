@@ -17,7 +17,8 @@ module Courses
     end
 
     def destroy
-      @comment.destroy
+      @comment.archive!
+      redirect_to [current_course, current_menu, current_content]
     end
 
     private

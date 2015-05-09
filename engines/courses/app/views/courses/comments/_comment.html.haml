@@ -5,11 +5,12 @@
         %div= link_to comment_presenter.owner_name, user_app.user_path(comment.owner)
         %div= comment_presenter.posted_ago
       .col-md-7
-        .comment-body= simple_format(comment.body)
+        .comment-body= comment_presenter.body
       .col-md-2
         .action.pull-right
           = comment_presenter.reply_button
           = comment_presenter.edit_button
+          = comment_presenter.delete_button
 
     - if comment.posted_by?(current_user)
       .edit-form.mt20
