@@ -1,20 +1,25 @@
-- present(@user, Users::UserPresenter) do |user|
+- present(@user, Users::UserPresenter) do |user_presenter|
 
   .container
     .row
       .col-md-12
-        %h1= user.name
+        %h1= user_presenter.name
 
         .badges
-          = user.mentor_badge
+          = user_presenter.mentor_badge
 
-        .info
+        .mt10
           %ul.list-unstyled
-            %li= "Joined on #{ user.joined_date }"
-            %li= user.enrollment_count
-            %li= user.mentorship_count
+            %li= "Joined on #{ user_presenter.joined_date }"
+            %li= user_presenter.enrollment_count
+            %li= user_presenter.mentorship_count
 
     .row
-      .col-md-12
+      - if @user.is_a_mentor?
+        .col-md-6
+          %h3 Courses mentoring
+          = render partial: 'users/users/course', collection: user_presenter.mentoring_courses
+
+      .col-md-6
         %h3 Courses enrolled
-        = render partial: 'users/users/enrolled_course', collection: user.enrolled_courses
+        = render partial: 'users/users/course', collection: user_presenter.enrolled_courses
