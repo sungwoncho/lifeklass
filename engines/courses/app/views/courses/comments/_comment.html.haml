@@ -9,9 +9,13 @@
       .col-md-2
         .action.pull-right
           = comment_presenter.reply_button
+          = comment_presenter.edit_button
 
-    .reply-form.mt20
-      - unless comment.posted_by?(current_user)
-        = render 'courses/comments/form', comment: Courses::Comment.new(parent_id: comment.id)
+    - if comment.posted_by?(current_user)
+      .edit-form.mt20
+        = render 'courses/comments/form', comment: comment
 
-    .edit-form.mt20
+    - else
+      .reply-form.mt20
+        - unless comment.posted_by?(current_user)
+          = render 'courses/comments/form', comment: Courses::Comment.new(parent_id: comment.id)

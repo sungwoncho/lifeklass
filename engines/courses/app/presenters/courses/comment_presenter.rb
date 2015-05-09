@@ -18,5 +18,11 @@ module Courses
         h.link_to 'Reply', '#', class: 'reply-btn', data: { parent_id: model.id }
       end
     end
+
+    def edit_button
+      if model.posted_by?(h.current_user)
+        h.link_to 'Edit', '#', class: 'edit-btn'
+      end
+    end
   end
 end

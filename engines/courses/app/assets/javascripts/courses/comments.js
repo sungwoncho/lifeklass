@@ -1,5 +1,7 @@
 $(document).ready(function () {
-  $('.reply-btn').on('click', function (e) {
+
+  $('.reply-btn')
+  .on('click', function (e) {
     e.preventDefault();
 
     var me        = $(this),
@@ -8,4 +10,15 @@ $(document).ready(function () {
 
         replyForm.slideToggle(500);
   });
+
+  $('.edit-btn')
+  .on('click', function (e) {
+    e.preventDefault();
+
+    var me = $(this),
+        editForm = $(this).closest('.comment').find('.edit-form')
+
+        editForm.slideToggle(500);
+  });
+
 });
