@@ -1,12 +1,13 @@
-- present(@content) do |content|
+- present(@content) do |content_presenter|
   .header.mb20
-    %h2= @content.title
-    .text-muted= content.posted_on
+    %h2= content_presenter.title
+    .text-muted= content_presenter.posted_on
 
-  = @content.body.html_safe
+  = content_presenter.body.html_safe
 
   .action.mt30
-    = link_to 'Edit content', course_app.edit_course_menu_content_path(current_course, current_menu, @content)
+    = content_presenter.edit_button
+    = content_presenter.delete_button
 
   = nested_comments(@comments)
 
