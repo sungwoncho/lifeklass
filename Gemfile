@@ -24,6 +24,7 @@ group :development, :test do
   gem 'pry-rails'
   gem 'spring-commands-rspec'
   gem 'pry-remote'
+  gem 'timecop'
 end
 
 group :test do

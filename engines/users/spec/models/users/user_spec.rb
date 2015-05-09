@@ -50,12 +50,13 @@ RSpec.describe Users::User, type: :model do
   describe '#enrolled_since' do
     context 'when user is enrolled in the course' do
       it 'returns the created_at of enrollment' do
+        Timecop.freeze(Time.zone.now)
         user = Users::User.new
         wealth = Courses::Course.new
-        time = Time.zone.now - 1.day
-        enrollment = create(:enrollment, user: user, course: wealth, created_at: time)
+        enrollment = create(:enrollment, user: user, course: wealth)
 
-        expect(user.enrolled_since(wealth)).to eq time
+        expect(user.enrolled_since(wealth)).to eq enrollment.created_at
+        Timecop.return
       end
     end
   end
