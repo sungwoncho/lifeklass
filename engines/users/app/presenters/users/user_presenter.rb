@@ -26,7 +26,11 @@ module Users
     end
 
     def new_course_button
-      h.link_to 'New course', h.course_app.new_course_path, class: 'btn btn-default'
+      h.link_to 'New course', h.course_app.new_course_path, class: 'btn btn-default' if model.is_a_mentor?
+    end
+
+    def enrolled_date(course)
+      model.enrolled_since(course).strftime("%m/%d/%Y")
     end
 
     private

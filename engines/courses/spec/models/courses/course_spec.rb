@@ -9,6 +9,10 @@ RSpec.describe Courses::Course, type: :model do
     it { should have_many(:contents) }
   end
 
+  describe 'validation' do
+    it { should validate_presence_of(:title) }
+  end
+
   it 'has a valid factory' do
     expect(build(:course)).to be_valid
   end

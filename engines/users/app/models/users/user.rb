@@ -21,6 +21,10 @@ module Users
       Courses::Enrollment.find_by(user_id: self.id, course_id: course_id).present?
     end
 
+    def enrolled_since(course)
+      Courses::Enrollment.find_by(user_id: self.id, course_id: course.id).created_at if enrolled_in?(course.id)
+    end
+
     def enrolled_courses
       Courses::Enrollment.get_courses_by_user_id(self.id)
     end

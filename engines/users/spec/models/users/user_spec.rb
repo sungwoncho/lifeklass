@@ -47,6 +47,18 @@ RSpec.describe Users::User, type: :model do
     end
   end
 
+  describe '#enrolled_since' do
+    context 'when user is enrolled in the course' do
+      it 'returns the created_at of enrollment' do
+        user = Users::User.new
+        wealth = Courses::Course.new
+        enrollment = create(:enrollment, user: user, course: wealth)
+
+        expect(user.enrolled_since(wealth)).to eq enrollment.created_at
+      end
+    end
+  end
+
   describe '#mentoring_courses' do
     it 'is delegated to mentor' do
       user = Users::User.new

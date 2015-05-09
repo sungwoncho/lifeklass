@@ -1,0 +1,4 @@
+- present(current_user) do |user_presenter|
+  %li
+    %h4= link_to enrolled_course.title, course_app.course_information_path(enrolled_course)
+    %div= "Enrolled on #{ user_presenter.enrolled_date(enrolled_course) }"
