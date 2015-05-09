@@ -13,7 +13,7 @@ module Courses
 
     def current_menu
       if controller_name == 'menus'
-        Courses::Menu.find(params[:id])
+        Courses::Menu.find_by(id: params[:id])
       elsif ['comments', 'contents'].include? controller_name
         Courses::Menu.find(params[:menu_id])
       end
