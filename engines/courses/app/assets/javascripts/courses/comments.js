@@ -1,5 +1,5 @@
-var loaded = function () {
-  $(document).on('click', '.reply-btn', function (e) {
+$(document).ready(function () {
+  $('.reply-btn').on('click', function (e) {
     e.preventDefault();
 
     var me        = $(this),
@@ -8,6 +8,4 @@ var loaded = function () {
 
         replyForm.slideToggle(500);
   });
-}
-
-$(document).on('page:load ready', loaded);
+});

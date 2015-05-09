@@ -11,8 +11,8 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery.turbolinks
 //= require jquery_ujs
-//= require turbolinks
 
 //= require bootstrap.min
 //= require ckeditor/init
@@ -20,3 +20,5 @@
 //= require courses/application
 
 //= require_tree .
+
+//= require turbolinks

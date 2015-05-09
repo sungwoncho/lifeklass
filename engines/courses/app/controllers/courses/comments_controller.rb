@@ -10,7 +10,7 @@ module Courses
     end
 
     def update
-
+      
     end
 
     def destroy
