@@ -1,12 +1,30 @@
-.container
-  .row
-    .col-md-12
-      %h1= @course.title
-      %small
-        Taught by
-        = link_to @course.owner.name, mentor_app.mentor_path(@course.owner)
+- present(@course) do |course_presenter|
 
-      %p= @course.description
+  .container
+    .row
+      .col-md-12
+        %h1= course_presenter.title
+        %small
+          Mentor
+          = link_to course_presenter.owner.name, mentor_app.mentor_path(course_presenter.owner)
 
-      #enrollment-action= @course.enroll_action_for(current_user)
-      #go-to-course= @course.go_to_course(current_user)
+    .row
+      .col-md-8
+        %h2 About this course
+        %hr
+        .description= simple_format(course_presenter.description)
+
+        %h2 Statistics
+        %hr
+        %ul.list-unstyled
+          %li= "Offered since: #{course_presenter.created_date}"
+          %li= "Fellow mentees: #{course_presenter.mentee_count}"
+
+      .col-md-4
+        %h2 Action
+        %hr
+        #go-to-course.mb10= course_presenter.go_to_course
+        #enrollment-action.mb10= course_presenter.enroll_action
+
+        #mentor-action
+          .mb10= course_presenter.edit_course

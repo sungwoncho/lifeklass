@@ -1,0 +1,10 @@
+= simple_form_for course do |f|
+  = f.input :title
+  = f.input :description, as: :ckeditor, input_html: { ckeditor: { toolbar: 'mini' } }
+
+  = label_tag 'categories'
+
+  .categories
+    = f.collection_check_boxes :category_ids, @categories, :id, :name, include_hidden: false
+
+  = f.submit class: 'btn btn-default'

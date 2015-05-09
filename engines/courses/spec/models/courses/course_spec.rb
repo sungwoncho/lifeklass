@@ -42,4 +42,14 @@ RSpec.describe Courses::Course, type: :model do
       course.mentors
     end
   end
+
+  describe '#mentees' do
+    it 'asks Courses::Enrollment to get all mentees for the course' do
+      course = Courses::Course.new
+      allow(course).to receive(:id).and_return(1)
+
+      expect(Courses::Enrollment).to receive(:get_mentees_by_course_id).with(1)
+      course.mentees
+    end
+  end
 end

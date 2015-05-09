@@ -20,4 +20,15 @@ RSpec.describe Courses::Enrollment, type: :model do
       expect(result).to match_array [mma]
     end
   end
+
+  describe '.get_mentees_by_course_id' do
+    it 'returns users that enrolled in the course' do
+      mma = create(:course)
+      jim = create(:user)
+      create(:enrollment, user: jim, course: mma)
+
+      result = Courses::Enrollment.get_mentees_by_course_id(mma)
+      expect(result).to match_array [jim]
+    end
+  end
 end

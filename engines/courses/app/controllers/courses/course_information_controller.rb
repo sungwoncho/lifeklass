@@ -6,19 +6,9 @@ module Courses
       set_course
     end
 
-    def edit
-    end
-
-    def update
-    end
-
     private
       def set_course
-        @course = CoursePresenter.new(course, view_context)
-      end
-
-      def course
-        Course.find(params[:id])
+        @course = Course.find(params[:id])
       end
   end
 end

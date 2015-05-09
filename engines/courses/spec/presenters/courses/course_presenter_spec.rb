@@ -7,11 +7,12 @@ RSpec.describe Courses::CoursePresenter, type: :presenter do
   let(:view_context) { Courses::CoursesController.new.view_context }
   let(:course_presenter) { Courses::CoursePresenter.new(course, view_context) }
 
-  describe '#enroll_action_for(user)' do
-    context 'when user is already enrolled' do
+  describe '#enroll_action' do
+    context 'when current_user is already enrolled' do
       it 'displays drop button' do
         create(:enrollment, user: user, course: course)
-        result = course_presenter.enroll_action_for(user)
+        allow(view_context).to receive(:current_user).and_return(user)
+        result = course_presenter.enroll_action
 
         expect(result).to match %(Drop Course)
       end
@@ -19,7 +20,8 @@ RSpec.describe Courses::CoursePresenter, type: :presenter do
 
     context 'when user is not enrolled' do
       it 'displays enroll button' do
-        result = course_presenter.enroll_action_for(user)
+        allow(view_context).to receive(:current_user).and_return(Users::User.new)
+        result = course_presenter.enroll_action
 
         expect(result).to match %(Enroll)
       end
@@ -30,9 +32,20 @@ RSpec.describe Courses::CoursePresenter, type: :presenter do
     context 'when user is enrolled' do
       it 'displays the go to class button' do
         create(:enrollment, user: user, course: course)
-        result = course_presenter.go_to_course(user)
+        allow(view_context).to receive(:current_user).and_return(user)
+        result = course_presenter.go_to_course
 
         expect(result).to match %(Go to course)
+      end
+    end
+
+    context 'when user is not enrolled' do
+      it 'displays nothing' do
+        create(:enrollment, user: user, course: course)
+        allow(view_context).to receive(:current_user).and_return(Users::User.new)
+        result = course_presenter.go_to_course
+
+        expect(result).to eq nil
       end
     end
   end

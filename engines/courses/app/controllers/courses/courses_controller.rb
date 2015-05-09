@@ -20,6 +20,7 @@ module Courses
 
     def edit
       authorize_instructor!
+      @categories = Category.all
     end
 
     def create
@@ -30,6 +31,9 @@ module Courses
 
     def update
       authorize_instructor!
+      if @course.update!(course_params)
+        redirect_to @course
+      end
     end
 
     def destroy

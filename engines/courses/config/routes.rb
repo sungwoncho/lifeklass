@@ -1,6 +1,7 @@
 Courses::Engine.routes.draw do
-  resources :courses do
+  get 'courses/:id/edit' => 'courses#edit', as: :edit_course
 
+  resources :courses, except: :edit do
     member do
       resource :enrollment, only: [:create, :destroy]
     end
@@ -13,5 +14,5 @@ Courses::Engine.routes.draw do
     end
   end
 
-  resources :course_information, only: [:show, :edit, :update]
+  resources :course_information, only: [:show]
 end
