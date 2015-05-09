@@ -52,9 +52,10 @@ RSpec.describe Users::User, type: :model do
       it 'returns the created_at of enrollment' do
         user = Users::User.new
         wealth = Courses::Course.new
-        enrollment = create(:enrollment, user: user, course: wealth)
+        time = Time.zone.now - 1.day
+        enrollment = create(:enrollment, user: user, course: wealth, created_at: time)
 
-        expect(user.enrolled_since(wealth)).to eq enrollment.created_at
+        expect(user.enrolled_since(wealth)).to eq time
       end
     end
   end
