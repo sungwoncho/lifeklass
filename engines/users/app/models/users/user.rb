@@ -1,7 +1,8 @@
 module Users
   class User < ActiveRecord::Base
-
     self.table_name = 'users'
+
+    has_merit
 
     devise :database_authenticatable, :registerable,
            :recoverable, :rememberable, :trackable, :validatable
