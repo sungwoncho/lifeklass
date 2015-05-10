@@ -1,0 +1,25 @@
+.container
+  .row
+    .col-md-6
+      .item-container
+        %h2 Log in
+
+        = simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+          .form-inputs
+            = f.input :email, required: false, autofocus: true
+            = f.input :password, required: false
+            = f.input :remember_me, as: :boolean if devise_mapping.rememberable?
+
+          .form-actions
+            = f.button :submit, "Log in"
+
+        = render "devise/shared/links"
+
+    .col-md-6
+      .item-container
+        %h2 Not a member?
+
+        %p
+          LifeKlass is a crowd sourced knowledge base for lifestyle design. We help you learn life, because it matters.
+
+        = link_to 'Join the movement', user_app.new_user_registration_path, class: 'btn btn-default'
